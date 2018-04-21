@@ -1,7 +1,12 @@
 from position import Position
+<<<<<<< HEAD
 from card import Card, moveCard, spellCard
 import file
 import random
+=======
+import card
+import maps
+>>>>>>> a31fb51ba52a946e84efb5e901d5d2b429d04cd7
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
@@ -127,12 +132,19 @@ class Character():
     def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
 
-    def useMoveCard(self, moveCard, position):
-        moveCard.moveCharacter(self, position)
+    def find_where_can_go(self, moveCard):
+        rangemv = moveCard.getStep()
+        position = self.getPosition()
+
+    def useMoveCard(self, moveCard):
+        self.find_where_can_go(moveCard)
+
 
     def useCard(self,card):
         if card.getType() == "Spell Card":
-            self.useSpellCard(card)
+            self.buff.append(card)
+            if card.getHp() != 0: # Gain/lose HP from the Spell Card
+                self.setHp(self.getHp() + card.getHp())
         else:
             self.useMoveCard(card)
 

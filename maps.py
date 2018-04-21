@@ -22,10 +22,10 @@ class Maps:
         self.picture = []
         for i in range(64):
             self.coordinate.append([])
-            self.picture.append([])
+            #self.picture.append([])
             for j in range(96):
                 self.coordinate[i].append(Pair(None, terrain.Terrain()))
-                self.picture[i].append(".")
+                #self.picture[i].append(".")
 
     def print_map(self):
         file = open("maps/map.txt", "w")
@@ -38,6 +38,7 @@ class Maps:
         file = open("maps/map1.txt", "r")
         row = 0
         for line in file:
+            self.picture.append(line)
             for i in range(len(line)):
                 if line[i] == '.':
                     self.coordinate[row][i].set_terrain(terrain.Grass())
@@ -49,6 +50,9 @@ class Maps:
                     self.coordinate[row][i].set_terrain(terrain.Swamp())
             row += 1
 
+    def get_map(self):
+        return
+
     def print_terrain(self):
         file = open("maps/terrain.txt", "w")
         for i in range(64):
@@ -59,6 +63,6 @@ class Maps:
 
 if __name__ == '__main__':
     map = Maps()
-    map.print_map()
+    #map.print_map()
     #map.create_map()
     #map.print_terrain()
