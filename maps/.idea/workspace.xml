@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c4df81f8-4e35-41fd-bc26-5e643a12085e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../character.py" beforeDir="false" afterPath="$PROJECT_DIR$/../character.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../maps.py" beforeDir="false" afterPath="$PROJECT_DIR$/../maps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,8 +29,8 @@
       <file leaf-file-name="map1.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map1.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1450">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="709">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
             </state>
           </provider>
         </entry>
@@ -264,8 +267,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map1.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1450">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="709">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
         </state>
       </provider>
     </entry>

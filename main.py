@@ -1,4 +1,5 @@
 import character
+import maps
 def print_welcome():
     print("Welcome to the random name game")
 
@@ -25,6 +26,8 @@ def create_player():
 
 
 if __name__ == '__main__':
+    map = maps.Maps()
+    map.create_map()
     print_welcome()
     players_num = number_players()
     players = []

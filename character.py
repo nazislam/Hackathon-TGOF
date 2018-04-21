@@ -1,4 +1,6 @@
 from position import Position
+import card
+import maps
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
@@ -113,8 +115,13 @@ class Character():
     def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
 
-    def useMoveCard(self, moveCard, position):
-        moveCard.moveCharacter(self, position)
+    def find_where_can_go(self, moveCard):
+        rangemv = moveCard.getStep()
+        position = self.getPosition()
+
+    def useMoveCard(self, moveCard):
+        self.find_where_can_go(moveCard)
+
 
     def useCard(self,card):
         if card.getType() == "Spell Card":
