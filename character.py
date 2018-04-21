@@ -29,7 +29,7 @@ class Character():
         return self.luck
 
     def getAttack(self):
-        return self.attack
+        return self.attack + self.weapon.getAttack()
 
     def getDefense(self):
         return self.defense
