@@ -50,7 +50,7 @@ class Character():
     def getPosition(self):
         return self.position
 
-    def getCharacterType(self):
+    def getType(self):
         return self.characterType
 
     def setHp(self, value):
