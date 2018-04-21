@@ -66,7 +66,7 @@ class Character():
         return self.position
 
     def getType(self):
-        return self.characterType
+        return self.type
 
     #Setters
     def setHp(self, value):
