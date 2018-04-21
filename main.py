@@ -9,19 +9,19 @@ def number_players():
 def create_player():
     while (1):
         type = input("What kind of character do you want(archer, mage, knight, warrior)? Please enter the first character")
-        if type == "a":
+        if type.lower() == "a":
             cha = character.archer
             return cha
-        if type == 'm':
+        if type.lower() == 'm':
             cha = character.mage
             return cha
-        if type == 'k':
+        if type.lower() == 'k':
             cha = character.knight
             return cha
-        if type == 'w':
+        if type.lower() == 'w':
             cha = character.warrior
             return cha
-        print("Invalid input, please try again. (Try to input lower case character)")
+        print("Invalid input, please try again.")
 
 
 if __name__ == '__main__':
