@@ -82,7 +82,7 @@ class MoveCard(Card):
   def getStep(self):
     return self.step
 
-  def movecharacter(self, character, Position):
+  def moveCharacter(self, character, Position):
     pass
 
 
