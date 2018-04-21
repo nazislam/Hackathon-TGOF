@@ -14,38 +14,38 @@ class Character():
         self.range = range
         self.position = position
 
-        def getHp():
-            return self.hp
+    def getHp():
+        return self.hp
 
-        def getLevel():
-            return self.level
+    def getLevel():
+        return self.level
 
-        def getSpeed():
-            return self.speed
+    def getSpeed():
+        return self.speed
 
-        def getLuck():
-            return self.luck
+    def getLuck():
+        return self.luck
 
-        def getAttack():
-            return self.attack
+    def getAttack():
+        return self.attack
 
-        def getDefence():
-            return self.defence
+    def getDefence():
+        return self.defence
 
-        def getWeapon():
-            return self.weapon
+    def getWeapon():
+        return self.weapon
 
-        def getArmor():
-            return self.armor
-        
-        def getBoots():
-            return self.boots
-        
-        def getRange():
-            return self.range
-        
-        def getPosition():
-            return self.position
+    def getArmor():
+        return self.armor
+    
+    def getBoots():
+        return self.boots
+    
+    def getRange():
+        return self.range
+    
+    def getPosition():
+        return self.position
 
     def move(position):
         pass
@@ -57,7 +57,7 @@ class Character():
         pass
 
     def useSpellCard(spellCard):
-        pass
+        spellCard.applyEffects(self)
 
 archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6))
 mage = Character(30, 2, 5, 20, 34, 40, 'staff', 40, 10, 80, Position(3, 6))
