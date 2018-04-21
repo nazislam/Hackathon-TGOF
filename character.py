@@ -14,6 +14,7 @@ class Character():
         self.attackRange = attackRange
         self.position = position
         self.type = characterType
+        self.buff = [] #Store Spell Cards
 
     # getter functions
     def getHp(self):
