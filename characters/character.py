@@ -14,37 +14,37 @@ class Character():
         self.range = range
         self.position = position
 
-    def getHp():
+    def getHp(self):
         return self.hp
 
-    def getLevel():
+    def getLevel(self):
         return self.level
 
-    def getSpeed():
+    def getSpeed(self):
         return self.speed
 
-    def getLuck():
+    def getLuck(self):
         return self.luck
 
-    def getAttack():
+    def getAttack(self):
         return self.attack
 
-    def getDefence():
+    def getDefence(self):
         return self.defence
 
-    def getWeapon():
+    def getWeapon(self):
         return self.weapon
 
-    def getArmor():
+    def getArmor(self):
         return self.armor
     
-    def getBoots():
+    def getBoots(self):
         return self.boots
     
-    def getRange():
+    def getRange(self):
         return self.range
     
-    def getPosition():
+    def getPosition(self):
         return self.position
 
     def move(position):
