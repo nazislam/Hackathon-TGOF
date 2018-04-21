@@ -1,6 +1,7 @@
 class Card:
   def __init__(self, name, description):
     self.name = name
+    self.type = "Error"
     self.description = description
   
   #Getters
@@ -19,6 +20,7 @@ class SpellCard(Card):
     self.luck = luck
     self.speed = speed
     self.attRange = attRange
+    self.type = "Spell Card"
   
   #Getters
   def getHp(self):
@@ -78,6 +80,7 @@ class SpellCard(Card):
 class MoveCard(Card):
   def __init__(self, name, description, step):
     Card.__init__(self, name, description)
+    self.type = "Move Card"
     self.step = step
 
   #Getters
