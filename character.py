@@ -125,7 +125,9 @@ class Character():
 
     def useCard(self,card):
         if card.getType() == "Spell Card":
-            self.useSpellCard(card)
+            self.buff.append(card)
+            if card.getHp() != 0:
+                self.setHp(self.getHp() + card.getHp())
         else:
             self.useMoveCard(card)
 
