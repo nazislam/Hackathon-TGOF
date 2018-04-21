@@ -1,3 +1,0 @@
-"Warboots I"|6|"Increase the Speed of the Character by 6"
-"Warboots II"|10|"Increase the Defense of Character by 10"
-"Warboots III"|14|"Increase the Defense of Character by 14"

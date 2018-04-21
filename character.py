@@ -1,6 +1,12 @@
 from position import Position
+<<<<<<< HEAD
+from card import Card, moveCard, spellCard
+import file
+import random
+=======
 import card
 import maps
+>>>>>>> a31fb51ba52a946e84efb5e901d5d2b429d04cd7
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
@@ -17,6 +23,17 @@ class Character():
         self.position = position
         self.type = characterType
         self.buff = [] #Store Spell Cards
+        self.hand = [  ]
+
+    def genereateMoveCards(numOfCards):
+      fs = open('./card_catalog/moveCard', 'r')
+      f1 = fs.readlines()
+      for i in numOfCards:
+          for j in f1:
+              x = fs.split('|')
+              self.name = x[0]
+              self.step = x[1]
+              self.description = x[2]
 
     # getter functions
     def getHp(self):
@@ -242,7 +259,9 @@ class Character():
 
     def useCard(self,card):
         if card.getType() == "Spell Card":
-            self.useSpellCard(card)
+            self.buff.append(card)
+            if card.getHp() != 0: # Gain/lose HP from the Spell Card
+                self.setHp(self.getHp() + card.getHp())
         else:
             self.useMoveCard(card)
 

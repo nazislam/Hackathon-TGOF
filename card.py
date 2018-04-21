@@ -103,18 +103,12 @@ class MoveCard(Card):
   def moveCharacter(self, character, Position):
     pass
 
-
-
-
-
-
-
-
-
-
-
-
-    
+  def generateCard(self, cardCatalog):
+      x = cardCatalog.split('|')
+      for j in x:
+          self.name = x[0]
+          self.step = x[1]
+          self.description = x[2]
 
 
 
