@@ -126,7 +126,7 @@ class Character():
     def useCard(self,card):
         if card.getType() == "Spell Card":
             self.buff.append(card)
-            if card.getHp() != 0:
+            if card.getHp() != 0: # Gain/lose HP from the Spell Card
                 self.setHp(self.getHp() + card.getHp())
         else:
             self.useMoveCard(card)
