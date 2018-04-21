@@ -2,16 +2,38 @@
 
 
 class SpellCard(Card):
-  def __init__(self, name, description, step, hp, attack, defend, luck, attRange):
+  def __init__(self, name, description, hp, attack, defend, luck, speed, attRange):
     Card.__init__(self, name, description)
-    self.step = step
     self.hp = hp
     self.attack = attack
     self.defend = defend
     self.luck = luck
+    self.speed = speed
     self.attRange = attRange
-
+    
   def applyHP(self, Character):
+    pass
+
+  def applyAttack(self, Character):
+    pass
+
+  def applyDefend(self, Character):
+    pass
+
+  def applyLuck(self, Character):
+    pass
+    
+  def applySpeed(self, Character):
+    pass
+
+  def applyAttackRange(self, Character):
+    pass
+
+
+
+
+
+
 
 
 
