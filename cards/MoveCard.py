@@ -10,6 +10,7 @@ class MoveCard(Card):
     return self.step
 
   def moveCharacter(self, Character, Position):
+    pass
 
 
 
