@@ -15,8 +15,6 @@ class Character():
         self.position = position
         self.type = characterType
 
-
-
     # getter functions
     def getHp(self):
         return self.hp
@@ -54,6 +52,7 @@ class Character():
     def getType(self):
         return self.characterType
 
+    #Setters
     def setHp(self, value):
         self.hp = value
 
