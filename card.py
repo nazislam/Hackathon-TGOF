@@ -44,6 +44,7 @@ class SpellCard(Card):
   def getAttackRange(self):
     return self.attRange
 
+"""  No need
   #Spell Card Effects
   def applyEffects(self, character):
     #Chracter will call this function
@@ -56,7 +57,7 @@ class SpellCard(Card):
     self.applyAttackRange(character)
     self.applySpeed(character)
 
-"""  No need
+
   def applyHP(self, character):
     pass
     character.increaseHp(self.getHp())
