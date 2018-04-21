@@ -42,12 +42,15 @@ class Character():
     
     def getBoots(self):
         return self.boots
-    
+
     def getRange(self):
         return self.range
     
     def getPosition(self):
         return self.position
+
+    def setHp(self, value):
+        self.hp = value
 
     # other functions
     def decreasePower(self, value):
