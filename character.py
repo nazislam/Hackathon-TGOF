@@ -1,4 +1,4 @@
-import position
+from position import Position
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
@@ -98,8 +98,8 @@ class Character():
     def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
 
-    def useMoveCard(self, moveCard):
-        moveCard.moveCharacter(character, position)
+    def useMoveCard(self, moveCard, position):
+        moveCard.moveCharacter(self, position)
 
 
 archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6), 'Archer')
