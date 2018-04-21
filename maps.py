@@ -35,7 +35,7 @@ class Maps:
             file.write("\n")
 
     def create_map(self):
-        file = open("maps/map.txt", "r")
+        file = open("maps/map1.txt", "r")
         row = 0
         for line in file:
             for i in range(len(line)):
@@ -50,7 +50,7 @@ class Maps:
             row += 1
 
     def print_terrain(self):
-        file = open("terrain.txt", "w")
+        file = open("maps/terrain.txt", "w")
         for i in range(64):
             for j in range(96):
                 terrain = self.coordinate[i][j].get_terrain()
