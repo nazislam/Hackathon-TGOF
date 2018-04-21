@@ -1,5 +1,4 @@
 import terrain
-from "../characters/character" import
 class Pair:
     def __init__(self, obj, terrain):
         self.obj = obj
@@ -29,14 +28,14 @@ class Maps:
                 self.picture[i].append(".")
 
     def print_map(self):
-        file = open("map.txt", "w")
+        file = open("maps/map.txt", "w")
         for i in range(64):
             for j in range(96):
                 file.write(self.picture[i][j])
             file.write("\n")
 
     def create_map(self):
-        file = open("map.txt", "r")
+        file = open("maps/map.txt", "r")
         row = 0
         for line in file:
             for i in range(len(line)):
@@ -60,6 +59,6 @@ class Maps:
 
 if __name__ == '__main__':
     map = Maps()
-    #map.print_map()
-    map.create_map()
-    map.print_terrain()
+    map.print_map()
+    #map.create_map()
+    #map.print_terrain()

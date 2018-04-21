@@ -1,13 +1,23 @@
 class Card:
+<<<<<<< HEAD
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+
+    def getName(self):
+        return self.name
+=======
   def __init__(self, name, description):
     self.name = name
     self.description = description
-
+  
+  #Getters
   def getName(self):
     return self.name
+>>>>>>> 4a540bf41906ac2527b493999234838c06667d91
 
-  def getDescription(self):
-    return self.description
+    def getDescription(self):
+        return self.description
 
 class SpellCard(Card):
   def __init__(self, name, description, hp, attack, defense, luck, speed, attRange):
@@ -79,6 +89,7 @@ class MoveCard(Card):
     Card.__init__(self, name, description)
     self.step = step
 
+  #Getters
   def getStep(self):
     return self.step
 
