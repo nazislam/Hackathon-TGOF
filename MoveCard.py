@@ -1,4 +1,5 @@
 #import Position
+from card import Card
 
 
 class MoveCard(Card):
@@ -7,8 +8,5 @@ class MoveCard(Card):
         self.step = step
 
 
-def getStep(self):
-    return self.step
-
-
-def moveCharacter(self, Character, Position):
+    def getStep(self):
+        return self.step
