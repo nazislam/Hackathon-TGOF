@@ -12,6 +12,7 @@ class SpellCard(Card):
     self.attRange = attRange
 
   def applyEffects(self, Character):
+    #Chracter will call this function
     #This call other apply functions
     pass
 
