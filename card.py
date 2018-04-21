@@ -2,7 +2,8 @@ class Card:
   def __init__(self, name, description):
     self.name = name
     self.description = description
-
+  
+  #Getters
   def getName(self):
     return self.name
 
@@ -79,6 +80,7 @@ class MoveCard(Card):
     Card.__init__(self, name, description)
     self.step = step
 
+  #Getters
   def getStep(self):
     return self.step
 

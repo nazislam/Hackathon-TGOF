@@ -1,4 +1,4 @@
-"Walk"|1|"The Character moves 1 block."
-"Run"|2|"The Character moves 2 block."
-"Rush"|3|"The Character moves 3 block."
-"Sprint"|4|"The Character moves 4 block."
+"Walk"|1|"The Character moves 1 step."
+"Run"|2|"The Character moves 2 steps."
+"Rush"|3|"The Character moves 3 steps."
+"Sprint"|4|"The Character moves 4 steps."
