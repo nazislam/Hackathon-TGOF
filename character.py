@@ -1,13 +1,13 @@
 import position
 
 class Character():
-    def __init__(self, hp, level, speed, luck, attack, defend, weapon, armor, boots, attackRange, position, characterType):
+    def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
         self.hp = hp
         self.level = level
         self.speed = speed
         self.luck = luck
         self.attack = attack
-        self.defend = defend
+        self.defense = defense
         self.weapon = weapon
         self.armor = armor
         self.boots = boots
@@ -32,8 +32,8 @@ class Character():
     def getAttack(self):
         return self.attack
 
-    def getDefence(self):
-        return self.defence
+    def getDefense(self):
+        return self.defense
 
     def getWeapon(self):
         return self.weapon
@@ -68,7 +68,7 @@ class Character():
     def setAttack(self, value):
         self.attack = value
 
-    def setDefend(self, value):
+    def setDefense(self, value):
         self.defend = value
 
     def setWeapon(self, value):
@@ -86,11 +86,12 @@ class Character():
     def setPosition(self, value):
         self.position = value
 
-    # other functions
-    def decreasePower(self, value):
+
+    #####
+    def decreaseHp(self, value):
         self.hp -= value
 
-    def increasePower(self, value):
+    def increaseHp(self, value):
         self.hp += value
 
     def useSpellCard(self, spellCard):
@@ -103,6 +104,4 @@ class Character():
 archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6), 'Archer')
 mage = Character(30, 2, 5, 20, 34, 40, 'staff', 40, 10, 80, Position(3, 6), 'Mage')
 knight = Character(80, 1, 50, 35, 70, 40, 'sword', 40, 0, 80, Position(3, 6), 'Knight')
-
-
 warrior = Character(50, 3, 10, 20, 30, 40, 'hammer', 40, 10, 80, Position(3, 6), 'Warrior')
