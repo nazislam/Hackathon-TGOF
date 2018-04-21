@@ -110,17 +110,17 @@ class Character():
     def increaseHp(self, value):
         self.hp += value
 
-    def useCard(self,card):
-        if card.getType() == "Spell Card":
-            useSpellCard(self, card)
-        else:
-            useMoveCard(self, card)
-
     def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
 
     def useMoveCard(self, moveCard, position):
         moveCard.moveCharacter(self, position)
+
+    def useCard(self,card):
+        if card.getType() == "Spell Card":
+            self.useSpellCard(card)
+        else:
+            self.useMoveCard(card)
 
 
 archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6), 'Archer')
