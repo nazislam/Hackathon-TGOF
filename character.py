@@ -110,6 +110,12 @@ class Character():
     def increaseHp(self, value):
         self.hp += value
 
+    def useCard(self,card):
+        if card.getType() == "Spell Card":
+            useSpellCard(self, card)
+        else:
+            useMoveCard(self, card)
+
     def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
 
