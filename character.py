@@ -132,12 +132,129 @@ class Character():
     def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
 
-    def find_where_can_go(self, moveCard):
+    def find_where_can_go(self, moveCard, map):
         rangemv = moveCard.getStep()
         position = self.getPosition()
+        passed = []
+        passed.append(position)
+        elements = [position]
+        steps = [0]
+        top = 1
+        bottom = 0
+        modified_map = map.get_map()
+        while bottom < top:
+            position = elements[bottom]
+            cur_step = steps[bottom]
+            tryx = position.getx() + 1
+            tryy = position.gety()
+            new_position = Position(tryx, tryy)
+            if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
+                terrain = map.coordinate[tryx][tryy]
+                if terrain.get_terrain().get_type() == "Mount":
+                    passed.append(new_position)
+                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                    passed.append(new_position)
+                    top += 1
+                    elements.append(new_position)
+                    steps.append(cur_step + 1)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    top += 1
+                    steps.append(cur_step + 2)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= 9:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    steps.append(rangemv)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                    top += 1
+            tryx = position.getx()
+            tryy = position.gety() + 1
+            new_position = Position(tryx, tryy)
+            if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
+                terrain = map.coordinate[tryx][tryy]
+                if terrain.get_terrain().get_type() == "Mount":
+                    passed.append(new_position)
+                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                    passed.append(new_position)
+                    top += 1
+                    elements.append(new_position)
+                    steps.append(cur_step + 1)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    top += 1
+                    steps.append(cur_step + 2)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= 9:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    steps.append(rangemv)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                    top += 1
+            tryx = position.getx() - 1
+            tryy = position.gety()
+            new_position = Position(tryx, tryy)
+            if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
+                terrain = map.coordinate[tryx][tryy]
+                if terrain.get_terrain().get_type() == "Mount":
+                    passed.append(new_position)
+                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                    passed.append(new_position)
+                    top += 1
+                    elements.append(new_position)
+                    steps.append(cur_step + 1)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    top += 1
+                    steps.append(cur_step + 2)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= 9:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    steps.append(rangemv)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                    top += 1
+            tryx = position.getx()
+            tryy = position.gety() - 1
+            new_position = Position(tryx, tryy)
+            if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
+                terrain = map.coordinate[tryx][tryy]
+                if terrain.get_terrain().get_type() == "Mount":
+                    passed.append(new_position)
+                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                    passed.append(new_position)
+                    top += 1
+                    elements.append(new_position)
+                    steps.append(cur_step + 1)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    top += 1
+                    steps.append(cur_step + 2)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= 9:
+                    passed.append(new_position)
+                    elements.append(new_position)
+                    steps.append(rangemv)
+                    modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
+                    top += 1
+            bottom += 1
+        file = open("maps/map2.txt", "w")
+        for i in modified_map:
+            file.write(i)
+            file.write("\n")
 
-    def useMoveCard(self, moveCard):
-        self.find_where_can_go(moveCard)
+
+    def useMoveCard(self, moveCard, map):
+        self.find_where_can_go(moveCard, map)
+
 
 
     def useCard(self,card):

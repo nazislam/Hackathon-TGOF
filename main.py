@@ -1,5 +1,7 @@
 import character
+import card
 import maps
+import position
 def print_welcome():
     print("Welcome to the random name game")
 
@@ -33,3 +35,7 @@ if __name__ == '__main__':
     players = []
     for i in range(players_num):
         players.append(create_player())
+    ach = players[0]
+    ach.setPosition(position.Position(5,5))
+    mc = card.MoveCard("abc","abc",4)
+    ach.useMoveCard(mc, map)
