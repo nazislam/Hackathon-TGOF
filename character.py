@@ -23,12 +23,6 @@ class Character():
     def getLevel(self):
         return self.level
 
-    def getSpeed(self):
-        buffSpeed = 0
-        for spell in self.buff:
-            buffSpeed += spell.getSpeed()
-        return self.speed + self.boots.getSpeed() + buffSpeed
-
     def getLuck(self):
         buffLuck = 0
         for spell in self.buff:
@@ -46,6 +40,12 @@ class Character():
         for spell in self.buff:
             buffDefense += spell.getDefense()
         return self.defense + self.armor.getDefense() + buffDefense
+    
+    def getSpeed(self):
+        buffSpeed = 0
+        for spell in self.buff:
+            buffSpeed += spell.getSpeed()
+        return self.speed + self.boots.getSpeed() + buffSpeed
 
     def getWeapon(self):
         return self.weapon
