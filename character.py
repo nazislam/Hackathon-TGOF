@@ -27,7 +27,7 @@ class Character():
         buffSpeed = 0
         for spell in self.buff:
             buffSpeed += spell.getSpeed()
-        return self.speed + buffSpeed
+        return self.speed + self.boots.getSpeed() + buffSpeed
 
     def getLuck(self):
         buffLuck = 0
