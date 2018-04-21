@@ -49,9 +49,17 @@ class SpellCard(Card):
     #Chracter will call this function
     #This call other apply functions
     pass
+    self.applyAttack(character)
+    self.applyDefense(character)
+    self.applyHP(character)
+    self.applyLuck(character)
+    self.applyAttackRange(character)
+    self.applySpeed(character)
 
+"""  No need
   def applyHP(self, character):
     pass
+    character.increaseHp(self.getHp())
 
   def applyAttack(self, character):
     pass
@@ -78,6 +86,7 @@ class SpellCard(Card):
     pass
     character.setAttack(getAttack() + self.getAttack)
     character.increaseAttack(self.getAttack())
+"""
 
 
 class MoveCard(Card):
