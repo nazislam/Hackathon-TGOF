@@ -86,11 +86,12 @@ class Character():
     def setPosition(self, value):
         self.position = value
 
-    # other functions
-    def decreasePower(self, value):
+
+    #####
+    def decreaseHp(self, value):
         self.hp -= value
 
-    def increasePower(self, value):
+    def increaseHp(self, value):
         self.hp += value
 
     def useSpellCard(self, spellCard):
