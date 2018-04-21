@@ -42,7 +42,7 @@ class SpellCard(Card):
   def applyAttack(self, Character):
     pass
 
-  def applydefense(self, Character):
+  def applyDefense(self, Character):
     pass
 
   def applyLuck(self, Character):

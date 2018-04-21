@@ -13,7 +13,11 @@
 "Defense Potion LV3"|0|0|12|0|0|"Increase the Character's Defense by 12 until the Character's next turn"
 "Defense Potion LV4"|0|0|15|0|0|"Increase the Character's Defense by 15 until the Character's next turn"
 "Defense Potion LV5"|0|0|20|0|0|"Increase the Character's Defense by 20 until the Character's next turn"
-"Luck Potion LV1"|0|0||20|0|"Increase the Character's Luck by 20 until the Character's next turn"
+"Luck Potion LV1"|0|0|20|0|"Increase the Character's Luck by 20 until the Character's next turn"
+"Luck Potion LV2"|0|0|30|0|"Increase the Character's Luck by 30 until the Character's next turn"
+"Luck Potion LV3"|0|0|50|0|"Increase the Character's Luck by 50 until the Character's next turn"
+"Luck Potion LV4"|0|0|70|0|"Increase the Character's Luck by 70 until the Character's next turn"
+"Luck Potion LV5"|0|0|100|0|"Increase the Character's Luck by 100 until the Character's next turn"
 
 
 
