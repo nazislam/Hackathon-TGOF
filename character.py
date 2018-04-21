@@ -24,16 +24,28 @@ class Character():
         return self.level
 
     def getSpeed(self):
-        return self.speed
+        buffSpeed = 0
+        for spell in self.buff:
+            buffSpeed += spell.getSpeed()
+        return self.speed + buffSpeed
 
     def getLuck(self):
-        return self.luck
+        buffLuck = 0
+        for spell in self.buff:
+            buffLuck += spell.getLuck()
+        return self.luck + buffLuck
 
     def getAttack(self):
-        return self.attack + self.weapon.getAttack()
+        buffAttack = 0
+        for spell in self.buff:
+            buffAttack += spell.getAttack()
+        return self.attack + self.weapon.getAttack() + buffAttack
 
     def getDefense(self):
-        return self.defense
+        buffDefense = 0
+        for spell in self.buff:
+            buffDefense += spell.getDefense()
+        return self.defense + self.armor.getDefense() + buffDefense
 
     def getWeapon(self):
         return self.weapon
@@ -44,8 +56,11 @@ class Character():
     def getBoots(self):
         return self.boots
 
-    def getRange(self):
-        return self.range
+    def getAttackRange(self):
+        buffAttackRange = 0
+        for spell in self.buff:
+            buffAttackRange += spell.getAttackRange()
+        return self.range + buffAttackRange
     
     def getPosition(self):
         return self.position
