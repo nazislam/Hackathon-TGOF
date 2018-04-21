@@ -1,19 +1,21 @@
 import position
 
 class Character():
-    def __init__(self, hp, level, speed, luck, attack, defence, weapon, armor, boots, range, position):
+    def __init__(self, hp, level, speed, luck, attack, defend, weapon, armor, boots, attackRange, position):
         self.hp = hp
-        self.level = lv
+        self.level = level
         self.speed = speed
         self.luck = luck
         self.attack = attack
-        self.defence = defence
+        self.defend = defend
         self.weapon = weapon
         self.armor = armor
         self.boots = boots
-        self.range = range
+        self.attackRange = attackRange
         self.position = position
 
+
+    # getter functions
     def getHp(self):
         return self.hp
 
@@ -47,17 +49,19 @@ class Character():
     def getPosition(self):
         return self.position
 
-    def move(position):
-        pass
+    # other functions
+    def decreasePower(self, value):
+        self.hp -= value
 
-    def attack():
-        pass
+    def increasePower(self, value):
+        self.hp += value
 
-    def useCard(card):
-        pass
-
-    def useSpellCard(spellCard):
+    def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
+
+    def useMoveCard(self, moveCard):
+        moveCard.moveCharacter(character, position)
+
 
 archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6))
 mage = Character(30, 2, 5, 20, 34, 40, 'staff', 40, 10, 80, Position(3, 6))
