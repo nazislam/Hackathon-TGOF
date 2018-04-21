@@ -52,7 +52,7 @@ class SpellCard(Card):
 
   def applyAttack(self, character):
     pass
-    character.setAttack(getAttack() + self.getAttack)
+    character.setAttack(character.getAttack() + self.getAttack)
     character.increaseAttack(self.getAttack())
     
 

@@ -13,7 +13,8 @@ class Character():
         self.boots = boots
         self.attackRange = attackRange
         self.position = position
-        self.characterType = characterType
+        self.type = characterType
+
 
 
     # getter functions
