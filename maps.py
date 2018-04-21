@@ -1,4 +1,5 @@
 import terrain
+from "../characters/character" import
 class Pair:
     def __init__(self, obj, terrain):
         self.obj = obj
