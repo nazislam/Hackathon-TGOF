@@ -1,7 +1,7 @@
 import position
 
 class Character():
-    def __init__(self, hp, level, speed, luck, attack, defend, weapon, armor, boots, attackRange, position):
+    def __init__(self, hp, level, speed, luck, attack, defend, weapon, armor, boots, attackRange, position, characterType):
         self.hp = hp
         self.level = level
         self.speed = speed
@@ -13,6 +13,7 @@ class Character():
         self.boots = boots
         self.attackRange = attackRange
         self.position = position
+        self.characterType = characterType
 
 
     # getter functions
@@ -49,8 +50,41 @@ class Character():
     def getPosition(self):
         return self.position
 
+    def getCharacterType(self):
+        return self.characterType
+
     def setHp(self, value):
         self.hp = value
+
+    def setLevel(self, value):
+        self.level = value
+
+    def setSpeed(self, value):
+        self.speed = value
+
+    def setLuck(self, value):
+        self.luck = value
+
+    def setAttack(self, value):
+        self.attack = value
+
+    def setDefend(self, value):
+        self.defend = value
+
+    def setWeapon(self, value):
+        self.weapon = value
+
+    def setArmor(self, value):
+        self.armor = value
+
+    def setBoots(self, value):
+        self.boots = value
+
+    def setRange(self, value):
+        self.range = value
+
+    def setPosition(self, value):
+        self.position = value
 
     # other functions
     def decreasePower(self, value):
@@ -66,7 +100,9 @@ class Character():
         moveCard.moveCharacter(character, position)
 
 
-archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6))
-mage = Character(30, 2, 5, 20, 34, 40, 'staff', 40, 10, 80, Position(3, 6))
-knight = Character(80, 1, 50, 35, 70, 40, 'sword', 40, 0, 80, Position(3, 6))
-warrior = Character(50, 3, 10, 20, 30, 40, 'hammer', 40, 10, 80, Position(3, 6))
+archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6), 'Archer')
+mage = Character(30, 2, 5, 20, 34, 40, 'staff', 40, 10, 80, Position(3, 6), 'Mage')
+knight = Character(80, 1, 50, 35, 70, 40, 'sword', 40, 0, 80, Position(3, 6), 'Knight')
+
+
+warrior = Character(50, 3, 10, 20, 30, 40, 'hammer', 40, 10, 80, Position(3, 6), 'Warrior')
