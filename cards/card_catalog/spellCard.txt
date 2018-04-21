@@ -1,0 +1,23 @@
+"HP Potion LV1"|20|0|0|0|0|"Restore 10HP"
+"HP Potion LV2"|20|0|0|0|0|"Restore 20HP"
+"HP Potion LV3"|20|0|0|0|0|"Restore 50HP"
+"HP Potion LV4"|20|0|0|0|0|"Restore 80HP"
+"HP Potion LV5"|20|0|0|0|0|"Restore 150HP"
+"Attack Potion LV1"|0|50|0|0|0|"Increase the Character's Attack by 5 until the Character's next turn"
+"Attack Potion LV2"|0|10|0|0|0|"Increase the Character's Attack by 10 until the Character's next turn"
+"Attack Potion LV3"|0|15|0|0|0|"Increase the Character's Attack by 15 until the Character's next turn"
+"Attack Potion LV4"|0|20|0|0|0|"Increase the Character's Attack by 20 until the Character's next turn"
+"Attack Potion LV5"|0|25|0|0|0|"Increase the Character's Attack by 25 until the Character's next turn"
+"Defense Potion LV1"|0|0|3|0|0|"Increase the Character's Defense by 3 until the Character's next turn"
+"Defense Potion LV2"|0|0|6|0|0|"Increase the Character's Defense by 6 until the Character's next turn"
+"Defense Potion LV3"|0|0|12|0|0|"Increase the Character's Defense by 12 until the Character's next turn"
+"Defense Potion LV4"|0|0|15|0|0|"Increase the Character's Defense by 15 until the Character's next turn"
+"Defense Potion LV5"|0|0|20|0|0|"Increase the Character's Defense by 20 until the Character's next turn"
+"Luck Potion LV1"|0|0|20|0|"Increase the Character's Luck by 20 until the Character's next turn"
+"Luck Potion LV2"|0|0|30|0|"Increase the Character's Luck by 30 until the Character's next turn"
+"Luck Potion LV3"|0|0|50|0|"Increase the Character's Luck by 50 until the Character's next turn"
+"Luck Potion LV4"|0|0|70|0|"Increase the Character's Luck by 70 until the Character's next turn"
+"Luck Potion LV5"|0|0|100|0|"Increase the Character's Luck by 100 until the Character's next turn"
+
+
+
