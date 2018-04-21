@@ -1,0 +1,15 @@
+"Arch I"|5|0|0|0|"Increase the Attacking Range of Archer by 5"
+"Arch II"|10|0|0|0|"Increase the Attacking Range of Archer by 10"
+"Arch III"|15|0|0|0|"Increase the Attacking Range of Archer by 15"
+
+"Staff I"|0|5|0|0|"Increase the Damage of Mage by 5"
+"Staff II"|0|15|0|0|"Increase the Damage of Mage by 10"
+"Staff III"|0|20|0|0|"Increase the Damage of Mage by 15"
+
+"Sword I"|0|0|5|0|"Increase the Speed of Knight by 5"
+"Sword II"|0|0|10|0|"Increase the Speed of Knightby 10"
+"Sword III"|0|0|15|0|"Increase the Speed of Knight by 15"
+
+"Hammer I"|0|0|0|5|"Increase the Defense of Warrior by 5"
+"Hammer II"|0|0|0|10|"Increase the Defense of Warrior by 10"
+"Hammer III"|0|0|0|15|"Increase the Defense of Warrior by 15"

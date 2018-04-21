@@ -1,27 +1,21 @@
-import sys
-sys.path.insert(0, './Hackathon-TGOF/characters') 
-from character.py import Character
 from random import random
 
-class Item(Character):
+class Item:
     def __init__(self, weapon, armor, boot):
-        Character.__init__(self,character)
         self.weapon = weapon
         self.armor = armor
         self.boot = boot
-        self.character = character
 
-
-    def getWeaponBox(self, weaponBox):
+    def getWeaponBox(self, weaponBox, character):
         self.weaponBox = weaponBox
 
         weaponName = ""
         for weaponName in len(range(0, 4)):
-            if character == "Archer":
+            if character.getType() == "Archer":
                 weaponName = "Arch"
-            elif character == "Mage":
+            elif character.getType() == "Mage":
                 weaponName = "Staff"
-            elif character == "Knight":
+            elif character.getType() == "Knight":
                 weaponName = "Sword"
             else:
                 weaponName = "Hammer"
@@ -37,18 +31,19 @@ class Item(Character):
                 weaponLevel = "III"
 
         weaponBox = {weaponName:weaponLevel}
+        return weaponBox
             
         
-    def getArmorBox(self, armorBox):
+    def getArmorBox(self, armorBox, character):
         self.armorBox = armorBox
 
         armorName = ""
         for armorName in len(range(0, 4)):
-            if character == "Archer":
+            if character.getType() == "Archer":
                 armorName = "Leather Armor"
-            elif character == "Mage":
+            elif character.getType() == "Mage":
                 armorName = "Cloth Armor"
-            elif character == "Knight":
+            elif character.getType() == "Knight":
                 armorName = "Chain Armor"
             else:
                 armorName = "Plate Armor"
@@ -64,6 +59,7 @@ class Item(Character):
                 armorLevel = "III"
 
         armorBox = {armorName:armorLevel}
+        return armorBox
     
     def getBootBox(self, bootBox):
         self.bootBox = bootBox
@@ -80,3 +76,4 @@ class Item(Character):
                 bootLevel = "III"
 
         bootBox = {bootName:bootLevel}
+        return bootBox
