@@ -8,8 +8,11 @@ class Card:
   def getName(self):
     return self.name
 
-    def getDescription(self):
-        return self.description
+  def getDescription(self):
+    return self.description
+
+  def getType(self):
+    return self.type
 
 class SpellCard(Card):
   def __init__(self, name, description, hp, attack, defense, luck, speed, attRange):

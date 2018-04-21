@@ -23,17 +23,29 @@ class Character():
     def getLevel(self):
         return self.level
 
-    def getSpeed(self):
-        return self.speed
-
     def getLuck(self):
-        return self.luck
+        buffLuck = 0
+        for spell in self.buff:
+            buffLuck += spell.getLuck()
+        return self.luck + buffLuck
 
     def getAttack(self):
-        return self.attack + self.weapon.getAttack()
+        buffAttack = 0
+        for spell in self.buff:
+            buffAttack += spell.getAttack()
+        return self.attack + self.weapon.getAttack() + buffAttack
 
     def getDefense(self):
-        return self.defense
+        buffDefense = 0
+        for spell in self.buff:
+            buffDefense += spell.getDefense()
+        return self.defense + self.armor.getDefense() + buffDefense
+    
+    def getSpeed(self):
+        buffSpeed = 0
+        for spell in self.buff:
+            buffSpeed += spell.getSpeed()
+        return self.speed + self.boots.getSpeed() + buffSpeed
 
     def getWeapon(self):
         return self.weapon
@@ -44,14 +56,17 @@ class Character():
     def getBoots(self):
         return self.boots
 
-    def getRange(self):
-        return self.range
+    def getAttackRange(self):
+        buffAttackRange = 0
+        for spell in self.buff:
+            buffAttackRange += spell.getAttackRange()
+        return self.range + buffAttackRange
     
     def getPosition(self):
         return self.position
 
     def getType(self):
-        return self.characterType
+        return self.type
 
     #Setters
     def setHp(self, value):
@@ -94,6 +109,12 @@ class Character():
 
     def increaseHp(self, value):
         self.hp += value
+
+    def useCard(self,card):
+        if card.getType() == "Spell Card":
+            useSpellCard(self, card)
+        else:
+            useMoveCard(self, card)
 
     def useSpellCard(self, spellCard):
         spellCard.applyEffects(self)
