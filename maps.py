@@ -19,11 +19,13 @@ class Pair:
 class Maps:
     def __init__(self):
         self.coordinate = []
+        self.maxx = 64
+        self.maxy = 96
         self.picture = []
-        for i in range(64):
+        for i in range(self.maxx):
             self.coordinate.append([])
             #self.picture.append([])
-            for j in range(96):
+            for j in range(self.maxy):
                 self.coordinate[i].append(Pair(None, terrain.Terrain()))
                 #self.picture[i].append(".")
 
@@ -50,19 +52,23 @@ class Maps:
                     self.coordinate[row][i].set_terrain(terrain.Swamp())
             row += 1
 
+    def get_terrain(self):
+        return self.coordinate
+
     def get_map(self):
-        return
+        return self.picture
 
     def print_terrain(self):
         file = open("maps/terrain.txt", "w")
-        for i in range(64):
-            for j in range(96):
+        for i in range(self.maxx):
+            for j in range(self.maxy):
                 terrain = self.coordinate[i][j].get_terrain()
                 file.write(terrain.get_type())
             file.write("\n")
 
 if __name__ == '__main__':
-    map = Maps()
+    pass
+    #map = Maps()
     #map.print_map()
     #map.create_map()
     #map.print_terrain()

@@ -25,5 +25,5 @@ if __name__ == '__main__':
     file = open("map1.txt", "w")
     for line in lines:
         file.write(line)
-        file.write("\n")
+        #file.write("\n")
 
