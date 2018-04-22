@@ -106,31 +106,6 @@ def print_text2(surface, text, font, size, color, x, y):
     text_rect.x, text_rect.y = x, y
     surface.blit(text_surface, text_rect)
 
-
-def menu_loop():
-    intro = True
-    screen.fill((0, 0, 0))
-    print_text1(screen, 'Whispers of War', 'resources/fonts/arial.ttf', 100,
-                (255, 255, 255), screen_w / 2, 300)
-
-    while intro:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-
-        botton('START', (0, 0, 0), (screen_w / 2 - 75),
-               (screen_h * 1 / 2 + 50), 150, 50, (100, 255, 180), (0, 150, 0),
-               'start')
-
-        pygame.display.update()
-        clock.tick(60)
-
-
-def selecting_loop():
-    pass
-
-
 def renderMapTerrain():
     grass = pygame.image.load('resources/terrain/grass.png')
     grass = pygame.transform.scale(grass, (40, 40))
@@ -156,6 +131,29 @@ def renderMapTerrain():
             char = file.read(1)
 
     file.close()
+
+def menu_loop():
+    intro = True
+    screen.fill((0, 0, 0))
+    print_text1(screen, 'Whispers of War', 'resources/fonts/arial.ttf', 100,
+                (255, 255, 255), screen_w / 2, 300)
+
+    while intro:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        botton('START', (0, 0, 0), (screen_w / 2 - 75),
+               (screen_h * 1 / 2 + 50), 150, 50, (100, 255, 180), (0, 150, 0),
+               'start')
+
+        pygame.display.update()
+        clock.tick(60)
+
+
+def selecting_loop():
+    pass
 
 
 def playing_loop():
