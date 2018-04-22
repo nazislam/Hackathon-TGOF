@@ -190,7 +190,7 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
                     passed.append(new_position)
                 if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -215,7 +215,7 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
                     passed.append(new_position)
                 if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -240,7 +240,7 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx >= 0 and tryx < map.maxx and tryy >= 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
                     passed.append(new_position)
                 if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -265,7 +265,7 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
                     passed.append(new_position)
                 if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -362,14 +362,19 @@ class Character():
         file = open("map2/map_attack.txt", "w")
         for i in modified_map:
             file.write(i)
+        return elements
 
-    def useAttackCard(self, card):
-        self.find_where_can_attack()
+    def useAttackCard(self, card, map):
+        places = self.find_where_can_attack(map)
         atk = card.getAttack() + self.getAttack()
+        can_attack = []
+        for i in range(1, places):
+            pos = places[i]
+            x = pos.x
+            y = pos.y
+            if map.coordinate[x][y].get_type() == "Player":
+                can_attack.append(Position(x, y))
         x, y = input("please enter the coordinate you want to attack").strip().split()
         x = int(x)
         y = int(y)
-        return (x, y, atk)
-
-
-
+        obj = map.coordinate[x][y].get_obj()

@@ -77,13 +77,13 @@ class Maps:
                 file.write(terrain.get_type())
             file.write("\n")
 
-    def set_obj(self, times):
+    def set_random_card(self, times):
         for i in range(times):
             my_card = card.generateCard()
             x = random.randint(0, self.maxx - 1)
             y = random.randint(0, self.maxy - 1)
             self.coordinate[x][y].set_obj(my_card, "Card")
-
+            self.picture[x] = self.picture[x][:y - 1] + "C" + self.picture[x][y:]
 
 
 if __name__ == '__main__':
