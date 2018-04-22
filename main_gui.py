@@ -6,17 +6,20 @@ Framework : Pygame
 import pygame
 import game
 
-def main():
-  ##########Initialization##########
-  thisGame = Game()
-  # Initialize Pygame
-  pygame.init()
-  # Initialize Screen (Surface)
-  screen = pygame.display.set_mode(thisGame.getScreenResolution())
-  # Initialize Title
-  pygame.display.set_caption('Whispers of War')
-  # The game's clock
-  clock = pygame.time.Clock() 
+pygame.init()
+
+# resolution
+screen_w = 1280
+screen_h = 720
+
+# Surface
+screen = pygame.display.set_mode((screen_w,screen_h))
+
+# Title
+pygame.display.set_caption('Hangman')
+
+# The game's clock
+clock = pygame.time.Clock()
 
 
 def unpause():
@@ -27,11 +30,10 @@ def unpause():
     pause_end = pygame.time.get_ticks()
     start_time = start_time + pause_end - pause_start
 
-
 # Pause the Game with another screen
 def paused():
-    global pause
     global pause_start
+    global pause
     pause = True
     pause_start = pygame.time.get_ticks()
     screen.fill((0, 0, 0))
@@ -126,22 +128,23 @@ def playing_loop():
     global start_time
     start_time = pygame.time.get_ticks()
 
-    playing = True
-    screen.fill((0, 0, 0))
-    print_text1(screen, 'Playing', 'resources/fonts/arial.ttf', 100,
-                (255, 255, 255), screen_w / 2, 300)
+    while True:
+        # Show Prgress
+        screen.fill((0, 0, 0))
 
-    while playing:
         for event in pygame.event.get():
+            # Handle non-keyboard input
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
 
-        botton('PAUSE', (0, 0, 0), screen_w / 2 - int(150 / 2), screen_h - 50,
-               150, 50, (100, 255, 180), (0, 150, 0), 'pause')
+        # UI Bottons
 
+        botton('PAUSE', (0, 0, 0), screen_w/2 - int(150/2), screen_h-50, 150, 50, (100, 255, 180), (0, 150, 0),'pause')
+
+        # Keep track of frames
         pygame.display.update()
         clock.tick(60)
 
-
-menu_loop()
+if __name__ == "__main__":
+  menu_loop()

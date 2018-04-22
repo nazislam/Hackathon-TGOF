@@ -3,11 +3,12 @@ import pygame
 class Game:
   def __init__(self):
     self.title = "Whisper of War"
-    self.pause = False
+    self._pause = False
     self.screenW = 1280
     self.screenH = 720
     self.state = "intro"
 
+  #Getters
   def getScreenW(self):
     return self.screenW
   
@@ -21,6 +22,15 @@ class Game:
     return self.pause
 
   def getScreenResolution(self):
-    return (self.getScreenW(),self.getScreenH())
+    return self.getScreenW(),self.getScreenH()
+  
+  #Control
+  def unPause(self):
+    self._pause = False
+
+  def pause(self):
+    self._pause = True
+
+
 
   
