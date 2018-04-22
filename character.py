@@ -320,7 +320,7 @@ class Character():
         desired_position = Position(x, y)
         map.coordinate[self.getPosition().x][self.getPosition().y].terrain.stepable = True
         map.coordinate[x][y].terrain.stepable = True
-        if map.coordinate[x][y].get_type() == "Card":
+        if map.coordinate[x][y].get_type() == "Card" and len(self.hand) < 8:
             self.addCard(map.coordinate[x][y].get_obj())
         if map.coordinate[x][y].get_type() == "Box":
             box = map.coordinate[x][y].get_obj()

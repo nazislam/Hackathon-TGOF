@@ -1,4 +1,4 @@
 Name|AttackPoint|Description
-Riposte|5| A vicious strike that deals 5 pyshical damage to the enemy.
-Mortal Strike|10| A vicious strike that deals 10 pyshical damage to the enemy.
-Titan's grip|15| A vicious strike that deals 15 pyshical damage to the enemy.
+riposte|5|A vicious strike that deals 5 pyshical damage to the enemy.
+mortalStrike|10|A vicious strike that deals 10 pyshical damage to the enemy.
+titan_grip|15|A vicious strike that deals 15 pyshical damage to the enemy.
