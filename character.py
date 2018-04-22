@@ -9,7 +9,7 @@ from item import *
 def createAcher(i):
     x = random.randint(0, maps.maxx - 1)
     y = random.randint(0, maps.maxy - 1)
-    return Character(50, 1, 1, 20, 30, 40, 4, Position(9, 33), 'Archer',i)
+    return Character(50, 1, 1, 20, 30, 40, 4, Position(x, y), 'Archer',i)
 
 
 def createMage(i):
