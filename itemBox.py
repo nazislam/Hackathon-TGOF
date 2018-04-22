@@ -6,20 +6,20 @@ from random import random
 class WeaponBox:
     def __init__(self):
         self.weapon = "Has Not Been Generated"
-        self.type = "Weapon"
+        #self.type = "Weapon"
 
     def getWeapon(self):
         return self.weapon
 
-    def geneWeapon(self, character):
-
+    def generateWeapon(self, character):
         weaponType = ""
         weapon = ""
-        if character.getType() == "Archer":
+        characterType = character.getType()
+        if characterType == "Archer":
             weaponType = "Bow"
-        elif character.getType() == "Mage":
+        elif characterType == "Mage":
             weaponType = "Staff"
-        elif character.getType() == "Knight":
+        elif characterType == "Knight":
             weaponType = "Sword"
         else:
             weaponType = "Hammer"
@@ -82,11 +82,12 @@ class ArmorBox:
 
         armorType = ""
         armor = ""
-        if character.getType() == "Archer":
+        characterType = character.getType()
+        if characterType == "Archer":
             armorType = "Leather Armor"
-        elif character.getType() == "Mage":
+        elif characterType == "Mage":
             armorType = "Cloth Armor"
-        elif character.getType() == "Knight":
+        elif characterType == "Knight":
             armorType = "Chain Armor"
         else:
             armorType = "Plate Armor"
