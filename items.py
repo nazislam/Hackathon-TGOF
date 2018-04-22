@@ -9,9 +9,10 @@ class Item:
     def getDescription(self):
         return self.description
 
-
 class Weapon:
-    def __init__(self, level, attack, defense, speed, attRange):
+    def __init__(self, name, description, level, attack, defense, speed,
+                 attRange):
+        Item.__init__(self, name, description)
         self.level = level
         self.attack = attack
         self.defense = defense
@@ -33,17 +34,27 @@ class Weapon:
     def getAttackRange(self):
         return self.attRange
 
+
 class Armor:
-    def __init__(self, armorType, armorLevel, defense):
+    def __init__(self, name, description, level, defense):
+        Item.__init__(self, name, description)
+        self.level = level
         self.defense = defense
+
+    def getLevel(self):
+        return self.level
 
     def getDefense(self):
         return self.defense
 
-
 class Boot:
-    def __init__(self, bootName, bootLevel, speed):
+    def __init__(self, name, description, level, speed):
+        Item.__init__(self, name, description)
+        self.level = level
         self.speed = speed
+
+    def getLevel(self):
+        return self.level
 
     def getSpeed(self):
         return self.speed

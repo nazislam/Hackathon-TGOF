@@ -45,7 +45,7 @@ def generateMove():
         break
       count += 1
     file.close()
-    return MoveCard(stats[0],stats[3],stats[1])
+    return MoveCard(stats[0],stats[2],stats[1])
 
 def generateAttack():
       file = open('card_catalog/attackCard.txt', 'r')
