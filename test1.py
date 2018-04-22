@@ -9,4 +9,4 @@ testBox = WeaponBox()
 testBox.geneWeapon(testCharacter)
 charWeapon = testBox.getWeapon()
 
-print(charWeapon.getAttackRange())
+print(charWeapon.getAttack())
