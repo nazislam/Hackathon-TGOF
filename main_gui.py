@@ -253,6 +253,13 @@ def print_text2(surface, text, font, size, color, x, y):
     surface.blit(text_surface, text_rect)
 
 def renderHand(player_hand):
+    count = 0
+    for card in player_hand:
+        card_name = card.getName
+        cur_card = pygame.image.load('resources/cards/' + 'card_name' + '.png')
+        cur_card = pygame.transform.scale(cur_card, (60, 140))
+        screen.blit(cur_card (235 + 60 * k + 5, 578))
+
 
 
 def renderMapTerrain():
@@ -294,7 +301,6 @@ def renderMapUpdate():
                    "Player1": player_img[1]}
 
     startPos = 235
-
 
     for m in range(14):
         for n in range(26):
@@ -375,6 +381,7 @@ def playing_loop():
                     pygame.quit()
                     quit()
             
+            """
             command += "Player number " + str(turn + 1) + "'s turn\n"
             targets = player.check_attack_range(map)
             command += "Your current Hp is" + str(cur_player.getHp()) + "\n"
@@ -383,6 +390,9 @@ def playing_loop():
                 command += str(j) + ". " + str(cur_player.hand[j]) + "\n"
                 command += str(len(cur_player.hand)) + ". " + "Quit turn.\n"
             command += "Please enter your move: \n"
+            """
+
+            renderHand(cur_player.hand)
             #smg, smgc, x, y, w, h, ic, ac, action="None"
             #botton(command, (0, 0, 0), 5, screen_h - 55, 225, 50, (100, 255, 180),(0, 150, 0))
             
