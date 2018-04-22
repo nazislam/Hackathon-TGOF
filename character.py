@@ -1,6 +1,11 @@
 from position import Position
+<<<<<<< HEAD
+from card import Card
+from items import *
+=======
 import card
 import maps
+>>>>>>> 84ac47199a62ca56d8b37c3a0dc94fc9875469d1
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
@@ -19,8 +24,12 @@ class Character():
         self.buff = [] #Store Spell Cards
         self.hand = []
 
+<<<<<<< HEAD
+    def genereateMoveCards(self,numOfCards):
+=======
     """def genereateMoveCards(numOfCards):
 >>>>>>> 9a132f427f47ae4297f1d0f17619dd8dc8200cdf
+>>>>>>> 84ac47199a62ca56d8b37c3a0dc94fc9875469d1
       fs = open('./card_catalog/moveCard', 'r')
       f1 = fs.readlines()
       for i in numOfCards:
@@ -28,7 +37,7 @@ class Character():
               x = fs.split('|')
               self.name = x[0]
               self.step = x[1]
-              self.description = x[2]"""
+              self.description = x[2]
 
     # getter functions
     def getHp(self):
@@ -74,7 +83,7 @@ class Character():
         buffAttackRange = 0
         for spell in self.buff:
             buffAttackRange += spell.getAttackRange()
-        return self.range + buffAttackRange
+        return self.attackRange + buffAttackRange + self.weapon.getAttackRange()
     
     def getPosition(self):
         return self.position
@@ -244,6 +253,7 @@ class Character():
         file = open("map2/map2.txt", "w")
         for i in modified_map:
             file.write(i)
+            file.write("\n")
 
 
     def useMoveCard(self, moveCard, map):

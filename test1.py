@@ -4,9 +4,10 @@ from character import *
 
 
 #hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType
-testCharacter = Character(200, 12, 0, 0, 0, 0, "Bow", 0, 0, 0, 0, "Archer")
+testCharacter = Character(200, 12, 10, 10, 10, 10, charWeapon, 10, 10, 10, 10, "Archer")
 testBox = WeaponBox()
 testBox.geneWeapon(testCharacter)
 charWeapon = testBox.getWeapon()
-
-print(charWeapon.getAttack())
+testCharacter = Character(200, 12, 10, 10, 10, 10, charWeapon, 10, 10, 10, 10, "Archer")
+print(testCharacter.getAttackRange())
+print(charWeapon.getAttackRange())
