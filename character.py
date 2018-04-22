@@ -1,7 +1,7 @@
 from position import Position
 import card
 import maps
-#from items import *
+from items import *
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, attackRange, position, characterType):
@@ -17,7 +17,7 @@ class Character():
         self.buff = [] #Store Spell Cards
         self.hand = []
 
-        """if self.type == "Archer":
+        if self.type == "Archer":
             self.weapon = Weapon("Bow", "", 0, 0, 0, 0)
             self.armor = Armor("Leather Armor", "", 0)
             self.boots = Boot("Warboots", "", 0)
@@ -32,7 +32,7 @@ class Character():
         else:
             self.weapon = Weapon("Hammer", "", 0, 0, 0, 0)
             self.armor = Armor("Plate Armor", "", 0)
-            self.boots = Boot("Warboots", "", 0)"""
+            self.boots = Boot("Warboots", "", 0)
 
     def genereateMoveCards(self, numOfCards):
       fs = open('./card_catalog/moveCard', 'r')
@@ -399,7 +399,6 @@ class Character():
         x = int(x)
         y = int(y)
         return Position(x, y)
-
 
 archer = Character(50, 1, 5, 20, 30, 40, 40,Position(3, 6), 'Archer')
 mage = Character(30, 2, 5, 20, 34, 40, 40, Position(4, 6), 'Mage')
