@@ -87,7 +87,7 @@ if __name__ == '__main__':
                     if obj.getHp() <= 0:
                         map.delete(x, y)
                         players.remove(obj)
-                #if len(players) == 1:
-                    #print("Player number " + str(i + 1) + " won")
-                    #exit()
+                if len(players) == 1:
+                    print("Player number " + str(i + 1) + " won")
+                    exit()
         #break
