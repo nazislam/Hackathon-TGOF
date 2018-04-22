@@ -145,7 +145,7 @@ def playing_loop():
 
         # UI Bottons
 
-        botton('PAUSE', (0, 0, 0), screen_w / 2 - int(150 / 2), screen_h - 50,
+        botton('PAUSE', (0, 0, 0), screen_w-5, screen_h - 50,
                150, 50, (100, 255, 180), (0, 150, 0), 'pause')
 
         # Keep track of frames
