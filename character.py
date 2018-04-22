@@ -341,12 +341,7 @@ class Character():
         y = int(y)
         return (x, y, atk)
 
-<<<<<<< HEAD
-
 archer = Character(50, 1, 5, 20, 30, 40, 4,Position(3, 6), 'Archer')
-=======
-archer = Character(50, 1, 5, 20, 30, 40, 40,Position(3, 6), 'Archer')
->>>>>>> 58faa2723b7338825586271cb1df18a1789feebb
 mage = Character(30, 2, 5, 20, 34, 40, 40, Position(4, 6), 'Mage')
 knight = Character(80, 1, 50, 35, 70, 40, 40,Position(3, 6), 'Knight')
 warrior = Character(50, 3, 10, 20, 30, 40, 40, Position(3, 6), 'Warrior')
