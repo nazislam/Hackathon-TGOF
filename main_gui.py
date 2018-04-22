@@ -52,7 +52,7 @@ global cur_player
 number_random_card = 10
 players_num = 2
 players = []
-cur_player = ""
+cur_player = "" 
 map = mapsGUI.Maps()
 map.create_map()
 map.set_random_card(number_random_card)
@@ -176,6 +176,7 @@ def botton2(img, img2, x, y, action="None"):
         screen.blit(img, (x, y))
 
         if click[0] == 1 and action != None:
+            
             if action == 'start':
                 #reset()
                 playing_loop()
@@ -189,28 +190,52 @@ def botton2(img, img2, x, y, action="None"):
             elif action == 'menu':
                 menu_loop()
 
+            elif action == "1":
+                targets = cur_player.check_attack_range(map)
+                user_card = cur_player.hand.pop(choice)
+                if user_card.getType() == "Spell Card":
+                    cur_player.useSpellCard(user_card)
+                elif user_card.getType() == "Move Card":
+                    cur_player.useMoveCard(user_card, map)
+                    map.print_map()
+                    #print("Your position is: " + str(cur_player.getPosition()))
+                else:
+                    if targets == 0:
+                        cur_player.hand.append(user_card)
+                        print("Invalid move, there is no target in range")
+                        #continue
+                    x, y = cur_player.useAttackCard(user_card, map)
+                    if x == -1:
+                        pass
+                        #continue
+                    obj = map.coordinate[x][y].get_obj()
+                    #print("Successful hit. Enermy's Hp is " + str(obj.getHp()))
+                    if obj.getHp() <= 0:
+                        map.delete(x, y)
+                        players.remove(obj)
+
             elif action in [0, 1]:
-                archer = pygame.image.load('resources/characters/archer.png')
-                archer = pygame.transform.scale(archer, (40, 40))
-                knight = pygame.image.load('resources/characters/knight.png')
-                knight = pygame.transform.scale(knight, (40, 40))
-                mage = pygame.image.load('resources/characters/mage.png')
-                mage = pygame.transform.scale(mage, (40, 40))
-                warrior = pygame.image.load('resources/characters/warrior.png')
-                warrior = pygame.transform.scale(warrior, (40, 40))
+                archerImg = pygame.image.load('resources/characters/archer.png')
+                archerImg = pygame.transform.scale(archerImg, (40, 40))
+                knightImg = pygame.image.load('resources/characters/knight.png')
+                knightImg = pygame.transform.scale(knightImg, (40, 40))
+                mageImg = pygame.image.load('resources/characters/mage.png')
+                mageImg = pygame.transform.scale(mageImg, (40, 40))
+                warriorImg = pygame.image.load('resources/characters/warrior.png')
+                warriorImg = pygame.transform.scale(warriorImg, (40, 40))
                 
                 if img is archer:
                     char = character.createAcher(player_id[action])
-                    player_img.append(archer)
+                    player_img.append(archerImg)
                 elif img is mage:
                     char = character.createMage(player_id[action])
-                    player_img.append(mage)
+                    player_img.append(mageImg)
                 elif img is knight:
                     char = character.createKnight(player_id[action])
-                    player_img.append(knight)
+                    player_img.append(knightImg)
                 else:
                     char = character.createWarrior(player_id[action])
-                    player_img.append(warrior)
+                    player_img.append(warriorImg)
 
                 players.append(char)
                 position = players[action].getPosition()
@@ -255,12 +280,14 @@ def print_text2(surface, text, font, size, color, x, y):
 def renderHand(player_hand):
     count = 0
     for card in player_hand:
-        card_name = card.getName
-        cur_card = pygame.image.load('resources/cards/' + 'card_name' + '.png')
-        cur_card = pygame.transform.scale(cur_card, (60, 140))
-        screen.blit(cur_card (235 + 60 * k + 5, 578))
+        card_name = card.getName()
+        cur_card = pygame.image.load('resources/cards/' + card_name + '.png')
+        cur_card = pygame.transform.scale(cur_card, (84, 140))
+        screen.blit(cur_card, (236 + 84 * count + 10 * count, 573))
+        botton2(cur_card, cur_card, 236 + 84 * count + 10 * count, 573, str(count))
 
 
+        count += 1
 
 def renderMapTerrain():
     grass = pygame.image.load('resources/terrain/grass.png')
@@ -372,7 +399,8 @@ def playing_loop():
 
         if turn == 0:
             cur_player = players[turn]
-            cur_player.addCard(card.generateCard())
+            if len(cur_player.hand) < 8:
+                cur_player.addCard(card.generateCard())
             cur_player.buff = []
 
             for event in pygame.event.get():
@@ -405,9 +433,9 @@ def playing_loop():
                 (100, 255, 180), (0, 150, 0), 'pause')
         
         else:
-            player = players[turn]
-            player.addCard(card.generateCard())
-            player.buff = []
+            cur_player = players[turn]
+            cur_player.addCard(card.generateCard())
+            cur_player.buff = []
 
             for event in pygame.event.get():
                 # Handle non-keyboard input
