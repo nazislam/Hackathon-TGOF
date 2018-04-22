@@ -17,7 +17,7 @@ class Character():
         self.buff = [] #Store Spell Cards
         self.hand = []
 
-        if self.type == "Archer":
+        """if self.type == "Archer":
             self.weapon = Weapon("Bow", "", 0, 0, 0, 0)
             self.armor = Armor("Leather Armor", "", 0)
             self.boots = Boot("Warboots", "", 0)
@@ -32,7 +32,7 @@ class Character():
         else:
             self.weapon = Weapon("Hammer", "", 0, 0, 0, 0)
             self.armor = Armor("Plate Armor", "", 0)
-            self.boots = Boot("Warboots", "", 0)
+            self.boots = Boot("Warboots", "", 0)"""
 
     def genereateMoveCards(self, numOfCards):
       fs = open('./card_catalog/moveCard', 'r')
