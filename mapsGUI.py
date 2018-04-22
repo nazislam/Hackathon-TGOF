@@ -4,8 +4,8 @@ import terrain
 from position import Position
 import itemBox
 import card
-maxxx = 14
-maxyy = 26
+maxx = 14
+maxy = 26
 class Pair:
     def __init__(self, obj, terrain, type = "nothing"):
         self.obj = obj
@@ -19,7 +19,10 @@ class Pair:
         return self.obj
 
     def get_type(self):
-        return self.type
+        if self.type != "Player":
+            return self.type
+        else:
+            return self.type + str(self.obj.ID)
 
     def set_terrain(self, terrain):
         self.terrain = terrain
@@ -34,8 +37,8 @@ class Pair:
 class Maps:
     def __init__(self):
         self.coordinate = []
-        self.maxx = maxxx
-        self.maxy = maxyy
+        self.maxx = maxx
+        self.maxy = maxy
         self.picture = []
         for i in range(self.maxx):
             self.coordinate.append([])
@@ -45,14 +48,14 @@ class Maps:
                 #self.picture[i].append(".")
 
     def print_map(self):
-        file = open("map3/map.txt", "w")
+        file = open("map3/map1.txt", "w")
         for i in range(self.maxx):
             for j in range(self.maxy):
                 file.write(self.picture[i][j])
             file.write("\n")
 
     def create_map(self):
-        file = open("map2/map.txt", "r")
+        file = open("map3/map.txt", "r")
         row = 0
         for line in file:
             self.picture.append(line)

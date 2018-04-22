@@ -7,7 +7,7 @@ import pygame
 import random
 import character
 import card
-import maps
+import mapsGUI
 import position
 
 import game
@@ -26,6 +26,70 @@ pygame.display.set_caption('Hangman')
 
 # The game's clock
 clock = pygame.time.Clock()
+
+# Player's ID
+global player_id
+global player_img
+player_id = [0, 1]
+player0 = "image of player1"
+player1 = "image of player2"
+player_img = []
+
+#Jobs Avatar
+archer = pygame.image.load('resources/character/archer.png')
+archer = pygame.transform.scale(archer, (40, 40))
+knight = pygame.image.load('resources/terrain/knight.png')
+knight = pygame.transform.scale(knight, (40, 40))
+mage = pygame.image.load('resources/terrain/mage.png')
+mage = pygame.transform.scale(mage, (40, 40))
+warrior = pygame.image.load('resources/terrain/warrior.png')
+warrior = pygame.transform.scale(warrior, (40, 40))
+
+# Map's Property
+global map
+global players_num
+global number_random_card
+global players
+number_random_card = 10
+players_num = 2
+players = []
+map = mapsGUI.Maps()
+map.create_map()
+map.set_random_card(number_random_card)
+map.set_random_box(number_random_card)
+
+##############################################################################
+archer = pygame.image.load('resources/interfaces/character_button/archer.png')
+archer = pygame.transform.scale(archer, (200, 200))
+
+knight = pygame.image.load('resources/interfaces/character_button/knight.png')
+knight = pygame.transform.scale(knight, (200, 200))
+
+mage = pygame.image.load('resources/interfaces/character_button/mage.png')
+mage = pygame.transform.scale(mage, (200, 200))
+
+warrior = pygame.image.load(
+    'resources/interfaces/character_button/warrior.png')
+warrior = pygame.transform.scale(warrior, (200, 200))
+
+##
+
+archer2 = pygame.image.load(
+    'resources/interfaces/character_button/archer2.png')
+archer2 = pygame.transform.scale(archer2, (200, 200))
+
+knight2 = pygame.image.load(
+    'resources/interfaces/character_button/knight2.png')
+knight2 = pygame.transform.scale(knight2, (200, 200))
+
+mage2 = pygame.image.load('resources/interfaces/character_button/mage2.png')
+mage2 = pygame.transform.scale(mage2, (200, 200))
+
+warrior2 = pygame.image.load(
+    'resources/interfaces/character_button/warrior2.png')
+warrior2 = pygame.transform.scale(warrior2, (200, 200))
+
+##############################################################################
 
 
 def unpause():
@@ -84,7 +148,8 @@ def botton(smg, smgc, x, y, w, h, ic, ac, action="None"):
                 menu_loop()
 
             elif action == 'selecting':
-                selecting_loop()
+                selecting_loop(0)
+                selecting_loop(1)
 
             elif action == 'quit':
                 pygame.quit()
@@ -95,7 +160,9 @@ def botton(smg, smgc, x, y, w, h, ic, ac, action="None"):
     print_text1(screen, smg, 'freesansbold.ttf', int(h * 0.4), smgc,
                 (2 * (x) + w) / 2, (2 * (y) + h) / 2)
 
+
 #def botton2(smg, smgc, x, y, w, h, ic, ac, action="None"):
+
 
 def botton2(img, img2, x, y, action="None"):
     mouse = pygame.mouse.get_pos()
@@ -105,8 +172,8 @@ def botton2(img, img2, x, y, action="None"):
 
     #distance = ((mouse[0]-center_x)**2 + (mouse[1]-center_y)**2)**0.5
     #distance > 50**2
-    if x < mouse[0] < x+200 and y < mouse[1] < y+200:
-        screen.blit(img, (x,y))
+    if x < mouse[0] < x + 200 and y < mouse[1] < y + 200:
+        screen.blit(img, (x, y))
 
         if click[0] == 1 and action != None:
             if action == 'start':
@@ -122,16 +189,41 @@ def botton2(img, img2, x, y, action="None"):
             elif action == 'menu':
                 menu_loop()
 
-            elif action == 'selecting':
-                selecting_loop()
+            elif action in [0, 1]:
+                if img is archer:
+                    char = character.createAcher(player_id[action])
+                    player_img.append(img)
+                elif img is mage:
+                    char = character.createMage(player_id[action])
+                    player_img.append(img)
+                elif img is knight:
+                    char = character.createKnight(player_id[action])
+                    player_img.append(img)
+                else:
+                    char = character.createWarrior(player_id[action])
+                    player_img.append(img)
+
+                players.append(char)
+                position = players[action].getPosition()
+                x = position.getx()
+                y = position.gety()
+                map.coordinate[x][y].set_obj(players[action], "Player")
+                map.picture[
+                    x] = map.picture[x][:y - 1] + "P" + map.picture[x][y:]
+                map.print_map()
+                map.coordinate[x][y].terrain.stepable = False
+
+                if action == 0:
+                    selecting_loop(1)
+                if action == 1:
+                    playing_loop()
 
             elif action == 'quit':
                 pygame.quit()
                 quit()
 
     else:
-        screen.blit(img2, (x,y))
-
+        screen.blit(img2, (x, y))
 
 
 # Print text position by center coor
@@ -151,6 +243,7 @@ def print_text2(surface, text, font, size, color, x, y):
     text_rect.x, text_rect.y = x, y
     surface.blit(text_surface, text_rect)
 
+
 def renderMapTerrain():
     grass = pygame.image.load('resources/terrain/grass.png')
     grass = pygame.transform.scale(grass, (40, 40))
@@ -165,6 +258,42 @@ def renderMapTerrain():
     startPos = 235
     file = open("map3/map.txt", "r")
     char = file.read(1)
+
+    for i in range(14):
+        for k in range(27):
+            if char == "\n":
+                char = file.read(1)
+                continue
+            terrain = terrainDict[char]
+            screen.blit(terrain, (235 + 40 * k, 5 + i * 40))
+            char = file.read(1)
+
+    file.close()
+
+def renderMapUpdate():
+    grass = pygame.image.load('resources/terrain/grass.png')
+    grass = pygame.transform.scale(grass, (40, 40))
+    mountain = pygame.image.load('resources/terrain/mountain.png')
+    mountain = pygame.transform.scale(mountain, (40, 40))
+    river = pygame.image.load('resources/terrain/river.png')
+    river = pygame.transform.scale(river, (40, 40))
+    swamp = pygame.image.load('resources/terrain/swamp.png')
+    swamp = pygame.transform.scale(swamp, (40, 40))
+
+
+
+    terrainDict = {".": grass, "^": mountain, "*": river, "-": swamp, "Card" : card, "Box" : box, "Player0" : player0, "Player1": player1}
+
+    startPos = 235
+    file = open("map3/map.txt", "r")
+    char = file.read(1)
+
+    mapCoor = map.coordinate[][]
+
+    for m in range(14):
+        for n in range(26):
+            card_type = map.coordinate[m][n].get_type()
+
 
     for i in range(14):
         for k in range(27):
@@ -197,38 +326,13 @@ def menu_loop():
         clock.tick(60)
 
 
-def selecting_loop():
+def selecting_loop(player_number):
     intro = True
     screen.fill((0, 0, 0))
-    background = pygame.image.load('resources/interfaces/background/interface_selection.png')
-    screen.blit(background, (0,0))
-
-    archer = pygame.image.load('resources/interfaces/character_button/archer.png')
-    archer = pygame.transform.scale(archer, (200, 200))
-
-    knight = pygame.image.load('resources/interfaces/character_button/knight.png')
-    knight = pygame.transform.scale(knight, (200, 200))
-
-    mage = pygame.image.load('resources/interfaces/character_button/mage.png')
-    mage = pygame.transform.scale(mage, (200, 200))
-
-    warrior = pygame.image.load('resources/interfaces/character_button/warrior.png')
-    warrior = pygame.transform.scale(warrior, (200, 200))
-
-##
-
-    archer2 = pygame.image.load('resources/interfaces/character_button/archer2.png')
-    archer2 = pygame.transform.scale(archer2, (200, 200))
-
-    knight2 = pygame.image.load('resources/interfaces/character_button/knight2.png')
-    knight2 = pygame.transform.scale(knight2, (200, 200))
-
-    mage2 = pygame.image.load('resources/interfaces/character_button/mage2.png')
-    mage2 = pygame.transform.scale(mage2, (200, 200))
-
-    warrior2 = pygame.image.load('resources/interfaces/character_button/warrior2.png')
-    warrior2 = pygame.transform.scale(warrior2, (200, 200))
-
+    background = pygame.image.load(
+        'resources/interfaces/background/interface_selection' +
+        str(player_number+1) + '.png')
+    screen.blit(background, (0, 0))
 
     while intro:
         for event in pygame.event.get():
@@ -236,14 +340,14 @@ def selecting_loop():
                 pygame.quit()
                 quit()
 
-        botton2(archer, archer2, 55, 210, action="start")
-        botton2(knight, knight2, 350, 210, action="start")
-        botton2(mage, mage2, 700, 210, action="start")
-        botton2(warrior, warrior2, 1010, 210, action="start")
+        botton2(archer, archer2, 55, 210, player_number)
+        botton2(knight, knight2, 350, 210, player_number)
+        botton2(mage, mage2, 700, 210, player_number)
+        botton2(warrior, warrior2, 1010, 210, player_number)
 
         pygame.display.update()
         clock.tick(60)
-    
+
 
 def playing_loop():
     global start_time
