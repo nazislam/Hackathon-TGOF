@@ -21,4 +21,4 @@ file.close()
 
 print(stats)"""
 
-testCard = card.generateAttack()
+testCard = card.generateMove()

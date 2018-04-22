@@ -1,14 +1,5 @@
 import random
 
-def generateCard():
-    random_type = random.randrange(0, 100) % 3
-    if random_type == 0:
-        return generateSpell()
-    elif random_type == 1:
-        return generateMove()
-    else:
-        return generateAttack()
-
 def generateSpell():
     file = open('card_catalog/spellCard.txt', 'r')
     file_r = file.read()
@@ -45,7 +36,7 @@ def generateMove():
         break
       count += 1
     file.close()
-    return MoveCard(stats[0],stats[3],stats[1])
+    return MoveCard(stats[0],stats[2],stats[1])
 
 def generateAttack():
       file = open('card_catalog/attackCard.txt', 'r')
@@ -66,6 +57,14 @@ def generateAttack():
       file.close()
       return AttackCard(stats[0],stats[2],stats[1])
 
+def generateCard():
+    random_type = random.randrange(0, 100) % 3
+    if random_type == 0:
+        return generateSpell()
+    elif random_type == 1:
+        return generateMove()
+    else:
+        return generateAttack()
 
 class Card:
   def __init__(self, name, description):
