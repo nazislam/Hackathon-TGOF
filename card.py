@@ -14,6 +14,9 @@ class Card:
   def getType(self):
     return self.type
 
+  def generateCard(self):
+    pass
+
 class SpellCard(Card):
   def __init__(self, name, description, hp, attack, defense, luck, speed, attRange):
     Card.__init__(self, name, description)
@@ -43,6 +46,9 @@ class SpellCard(Card):
 
   def getAttackRange(self):
     return self.attRange
+
+  def generateCard(self):
+    pass
 
 """  No need
   #Spell Card Effects
@@ -107,6 +113,9 @@ class MoveCard(Card):
           self.step = x[1]
           self.description = x[2]
 
+  def generateCard(self):
+    pass
+
 class AttackCard(Card):
     def __init__(self, name, description, attack):
         Card.__init__(self, name, description)
@@ -117,6 +126,9 @@ class AttackCard(Card):
         return self.attack
 
 
+
+  def generateCard(self):
+    pass
 
 
 

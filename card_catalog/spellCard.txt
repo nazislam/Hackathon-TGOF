@@ -1,5 +1,6 @@
-"HP Potion LV1"|20|0|0|0|0|0|"Restore 10HP"
-"HP Potion LV2"|20|0|0|0|0|0|"Restore 20HP"
+name|hp|attack|defense|luck|speed|attRange|description
+HP Potion LV1|20|0|0|0|0|0|Restore 10HP
+HP Potion LV2|20|0|0|0|0|0|"Restore 20HP"
 "HP Potion LV3"|20|0|0|0|0|0|"Restore 50HP"
 "HP Potion LV4"|20|0|0|0|0|0|"Restore 80HP"
 "HP Potion LV5"|20|0|0|0|0|0|"Restore 150HP"
@@ -28,7 +29,3 @@
 "Sight Potion LV3"|0|0|0|0|0|3|"Increase the Character's Attack Range by 3 until the Character's next turn"
 "Sight Potion LV4"|0|0|0|0|0|4|"Increase the Character's Attack Range by 4 until the Character's next turn"
 "Sight Potion LV5"|0|0|0|0|0|5|"Increase the Character's Attack Range by 5 until the Character's next turn"
-
-
-
-
