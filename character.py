@@ -142,7 +142,7 @@ class Character():
         spellCard.applyEffects(self)
 
     def find_where_can_go(self, moveCard, map):
-        rangemv = moveCard.getStep()
+        rangemv = moveCard.getStep() + self.getSpeed()
         position = self.getPosition()
         passed = []
         passed.append(position)
@@ -335,14 +335,14 @@ class Character():
 
     def useAttackCard(self, card):
         self.find_where_can_attack()
-        atk = card.getAttack()
+        atk = card.getAttack() + self.getAttack()
         x, y = input("please enter the coordinate you want to attack").strip().split()
         x = int(x)
         y = int(y)
         return (x, y, atk)
 
 archer = Character(50, 1, 5, 20, 30, 40, 4,Position(3, 6), 'Archer')
-mage = Character(30, 2, 5, 20, 34, 40, 40, Position(4, 6), 'Mage')
+mage = Character(100, 2, 5, 20, 34, 40, 40, Position(4, 6), 'Mage')
 knight = Character(80, 1, 50, 35, 70, 40, 40,Position(3, 6), 'Knight')
 warrior = Character(50, 3, 10, 20, 30, 40, 40, Position(3, 6), 'Warrior')
 

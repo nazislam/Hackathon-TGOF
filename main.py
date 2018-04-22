@@ -41,6 +41,7 @@ if __name__ == '__main__':
         map.coordinate[x][y].set_obj(players[i])
     ach = players[0]
     x, y, atk = ach.useAttackCard(card.AttackCard("abc", "abc", 20))
+    ach.useSpellCard(card.SpellCard("abc", "abc", 0, 10, 0, 0, 0, 0))
     obj = map.coordinate[x][y].get_obj()
     obj.setHp(obj.getHp() - atk)
     map.coordinate[x][y].set_obj(obj)
