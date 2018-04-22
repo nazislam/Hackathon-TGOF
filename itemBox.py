@@ -1,20 +1,30 @@
-from items import Weapon
-from items import Armor
-from items import Boot
+from item import *
 from random import random
+
 
 class WeaponBox:
     def __init__(self):
         self.weapon = "Has Not Been Generated"
-        #self.type = "Weapon"
+        self.type = "Weapon"
 
     def getWeapon(self):
         return self.weapon
 
+    def setWeapon(self, weapon):
+        self.weapon = weapon
+
     def generateWeapon(self, character):
-        weaponType = ""
-        weapon = ""
+        weaponDict = {
+            "Archer": "Bow",
+            "Mage": "Staff",
+            "Knight": "Sword",
+            "Warrior": "Hammer"
+        }
+
         characterType = character.getType()
+        weaponName = weaponDict[characterType]
+
+        """
         if characterType == "Archer":
             weaponType = "Bow"
         elif characterType == "Mage":
@@ -23,51 +33,51 @@ class WeaponBox:
             weaponType = "Sword"
         else:
             weaponType = "Hammer"
+        """
+
+        weaponLevel = 0
         
+        random_level = random()
+        if random_level < 0.70:
+            weaponLevel = 1
+        elif 0.70 < random_level and random_level < 0.90:
+            weaponLevel = 2
+        else:
+            weaponLevel = 3
 
-        weaponLevel = ""
-        for weaponLevel in range(1,3):
-            random_level = random()
-            if random_level < 0.70:
-                weaponLevel = "I"
-            elif 0.70 < random_level and random_level < 0.90:
-                weaponLevel = "II"
-            else:
-                weaponLevel = "III"
+        if weaponName == "Bow":
+            if weaponLevel == 1:
+                weapon = bowLV1
+            elif weaponLevel == 2:
+                weapon = bowLV2
+            elif weaponLevel == 3:
+                weapon = bowLV3
 
-        if weaponType == "Bow":
-            if weaponLevel == "I":
-                weapon = Weapon(weaponType, weaponLevel, 5, 0, 0, 0)
-            elif weaponLevel == "II":
-                weapon = Weapon(weaponType, weaponLevel, 10, 0, 0, 0)
-            elif weaponLevel == "III":
-                weapon = Weapon(weaponType, weaponLevel, 15, 0, 0, 0)
+        if weaponName == "Staff":
+            if weaponLevel == 1:
+                weapon = staffLV0
+            elif weaponLevel == 2:
+                weapon = staffLV2
+            elif weaponLevel == 3:
+                weapon = staffLV3
 
-        if weaponType == "Staff":
-            if weaponLevel == "I":
-                weapon = Weapon(weaponType, weaponLevel, 5, 0, 0, 0)
-            elif weaponLevel == "II":
-                weapon = Weapon(weaponType, weaponLevel, 10, 0, 0, 0)
-            elif weaponLevel == "III":
-                weapon = Weapon(weaponType, weaponLevel, 15, 0, 0, 0)
+        if weaponName == "Sword":
+            if weaponLevel == 1:
+                weapon = swordLV1
+            elif weaponLevel == 2:
+                weapon = swordLV2
+            elif weaponLevel == 3:
+                weapon = swordLV3
 
-        if weaponType == "Sword":
-            if weaponLevel == "I":
-                weapon = Weapon(weaponType, weaponLevel, 5, 0, 0, 0)
-            elif weaponLevel == "II":
-                weapon = Weapon(weaponType, weaponLevel, 10, 0, 0, 0)
-            elif weaponLevel == "III":
-                weapon = Weapon(weaponType, weaponLevel, 15, 0, 0, 0)      
+        if weaponName == "Hammer":
+            if weaponLevel == 1:
+                weapon = hammerLV1
+            elif weaponLevel == 2:
+                weapon = hammerLV2
+            elif weaponLevel == 3:
+                weapon = hammerLV3
 
-        if weaponType == "Hammer":
-            if weaponLevel == "I":
-                weapon = Weapon(weaponType, weaponLevel, 5, 0, 0, 0)
-            elif weaponLevel == "II":
-                weapon = Weapon(weaponType, weaponLevel, 10, 0, 0, 0)
-            elif weaponLevel == "III":
-                weapon = Weapon(weaponType, weaponLevel, 15, 0, 0, 0)  
-
-        self.weapon = weapon
+        self.setWeapon(weapon)
 
 
 class ArmorBox:
@@ -77,95 +87,107 @@ class ArmorBox:
 
     def getArmor(self):
         return self.armor
-    
-    def geneArmor(self, character):
 
-        armorType = ""
-        armor = ""
-        characterType = character.getType()
-        if characterType == "Archer":
-            armorType = "Leather Armor"
-        elif characterType == "Mage":
-            armorType = "Cloth Armor"
-        elif characterType == "Knight":
-            armorType = "Chain Armor"
-        else:
-            armorType = "Plate Armor"
-        
-
-        armorLevel = ""
-        for armorLevel in range(1,3):
-            random_level = random()
-            if random_level() < 0.70:
-                armorLevel = "I"
-            elif 0.70 < random_level and random_level < 0.90:
-                armorLevel = "II"
-            else:
-                armorLevel = "III"
-
-        if armorType == "Leather Armor":
-            if armorLevel == "I":
-                armor = Armor(armorType, armorLevel, 5)
-            elif armorLevel == "II":
-                armor = Armor(armorType, armorLevel, 6)
-            elif armorLevel == "III":
-                armor = Armor(armorType, armorLevel, 7)
-
-        if armorType == "Cloth Armor":
-            if armorLevel == "I":
-                armor = Armor(armorType, armorLevel, 3)
-            elif armorLevel == "II":
-                armor = Armor(armorType, armorLevel, 4)
-            elif armorLevel == "III":
-                armor = Armor(armorType, armorLevel, 5)
-
-        if armorType == "Chain Armor":
-            if armorLevel == "I":
-                armor = Armor(armorType, armorLevel, 7)
-            elif armorLevel == "II":
-                armor = Armor(armorType, armorLevel, 8)
-            elif armorLevel == "III":
-                armor = Armor(armorType, armorLevel, 9)      
-
-        if armorType == "Plate Armor":
-            if armorLevel == "I":
-                armor = Armor(armorType, armorLevel, 9)
-            elif armorLevel == "II":
-                armor = Armor(armorType, armorLevel, 10)
-            elif armorLevel == "III":
-                armor = Armor(armorType, armorLevel, 11)  
-
+    def setArmor(self, armor):
         self.armor = armor
 
+    def geneArmor(self, character):
+        armorDict = {
+            "Archer": "Leather Armor",
+            "Mage": "Cloth Armor",
+            "Knight": "Chain Armor",
+            "Warrior": "Plate Armor"
+        }
 
-class BootBox:
-    def __init__(self, boot):
-        self.armor = "Has Not Been Generated"
-        self.type = "Armor"
-
-    def getBoot(self):
-        return self.boot   
-
-    def geneBoot(self, character):
+        characterType = character.getType()
+        armorName = armorDict[characterType]
 
 
-        bootName = "Warboots"
+        """
+        if characterType == "Archer":
+            armorName = "Leather Armor"
+        elif characterType == "Mage":
+            armorName = "Cloth Armor"
+        elif characterType == "Knight":
+            armorName = "Chain Armor"
+        else:
+            armorName = "Plate Armor"
+        """
 
-        bootLevel = ""
-        for bootLevel in range(1,3):
-            random_level = random()
-            if random_level() < 0.70:
-                bootLevel = "I"
-            elif 0.70 < random_level and random_level < 0.90:
-                bootLevel = "II"
-            else:
-                bootLevel = "III"
+        armorLevel = 0
+        
+        random_level = random()
+        if random_level() < 0.70:
+            armorLevel = 1
+        elif 0.70 < random_level and random_level < 0.90:
+            armorLevel = 2
+        else:
+            armorLevel = 3
 
-        if bootLevel == "I":
-            boot = Boot(bootName, bootLevel, 3)
-        elif bootLevel == "II":
-            boot = Boot(bootName, bootLevel, 5)
-        elif bootLevel == "III":
-            boot = Boot(bootName, bootLevel, 7)
+        if armorName == "Leather Armor":
+            if armorLevel == 1:
+                armor = Armor(armorName, armorLevel, "Great Leather Armor for Archer",5)
+            elif armorLevel == 2:
+                armor = Armor(armorName, armorLevel, "Ultra Leather Armor for Archer",6)
+            elif armorLevel == 3:
+                armor = Armor(armorName, armorLevel, "Ultimate Leather Armor for Archer",7)
 
-        self.boot = boot
+        if armorName == "Cloth Armor":
+            if armorLevel == 1:
+                armor = Armor(armorName, armorLevel, "Great Cloth Armor for Mage",3)
+            elif armorLevel == 2:
+                armor = Armor(armorName, armorLevel, "Ultra Cloth Armor for Mage",4)
+            elif armorLevel == 3:
+                armor = Armor(armorName, armorLevel, "Ultimate Cloth Armor for Mage",5)
+
+        if armorName == "Chain Armor":
+            if armorLevel == 1:
+                armor = Armor(armorName, armorLevel, "Great Chain Armor for Knight",7)
+            elif armorLevel == 2:
+                armor = Armor(armorName, armorLevel, "Ultra Chain Armor for Knight",8)
+            elif armorLevel == 3:
+                armor = Armor(armorName, armorLevel, "Ultimate Chain Armor for Knight",9)
+
+        if armorName == "Plate Armor":
+            if armorLevel == 1:
+                armor = Armor(armorName, armorLevel, "Great Plate Armor for Warrior",9)
+            elif armorLevel == 2:
+                armor = Armor(armorName, armorLevel, "Ultra Plate Armor for Warrior",10)
+            elif armorLevel == 3:
+                armor = Armor(armorName, armorLevel, "Ultimate Plate Armor for Warrior",11)
+
+        self.setArmor(armor)
+
+
+class bootsBox:
+    def __init__(self, boots):
+        self.boots = "Has Not Been Generated"
+        self.type = "Boots"
+
+    def getBoots(self):
+        return self.boots
+
+    def setBoots(self, boots):
+        self.boots = boots
+
+    def generateBoots(self, character):
+
+        bootsName = "Warbootss"
+        bootsLevel = 0
+        
+        random_level = random()
+        if random_level() < 0.70:
+            bootsLevel = 1
+        elif 0.70 < random_level and random_level < 0.90:
+            bootsLevel = 2
+        else:
+            bootsLevel = 3
+
+        if bootsLevel == 1:
+            boots = Boots(bootsName, bootsLevel, "Great Boots for the Character",3)
+        elif bootsLevel == 2:
+            boots = Boots(bootsName, bootsLevel, "Ultra Boots for the Character",5)
+        elif bootsLevel == 3:
+            boots = Boots(bootsName, bootsLevel, "Ultimate Boots for the Character",7)
+
+        self.setBoots(boots)
