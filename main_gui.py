@@ -4,6 +4,8 @@ Framework : Pygame
 """
 
 import pygame
+import random
+
 import game
 
 pygame.init()
@@ -104,6 +106,31 @@ def print_text2(surface, text, font, size, color, x, y):
     text_rect.x, text_rect.y = x, y
     surface.blit(text_surface, text_rect)
 
+def renderMapTerrain():
+    grass = pygame.image.load('resources/terrain/grass.png')
+    grass = pygame.transform.scale(grass, (40, 40))
+    mountain = pygame.image.load('resources/terrain/mountain.png')
+    mountain = pygame.transform.scale(mountain, (40, 40))
+    river = pygame.image.load('resources/terrain/river.png')
+    river = pygame.transform.scale(river, (40, 40))
+    swamp = pygame.image.load('resources/terrain/swamp.png')
+    swamp = pygame.transform.scale(swamp, (40, 40))
+    terrainDict = {".": grass, "^": mountain, "*": river, "-": swamp}
+
+    startPos = 235
+    file = open("map3/map.txt", "r")
+    char = file.read(1)
+
+    for i in range(14):
+        for k in range(27):
+            if char == "\n":
+                char = file.read(1)
+                continue
+            terrain = terrainDict[char]
+            screen.blit(terrain, (235 + 40 * k, 5 + i * 40))
+            char = file.read(1)
+
+    file.close()
 
 def menu_loop():
     intro = True
@@ -133,9 +160,15 @@ def playing_loop():
     global start_time
     start_time = pygame.time.get_ticks()
 
+    renderMapTerrain()
+
     while True:
         # Show Prgress
-        screen.fill((0, 0, 0))
+        #screen.fill((0, 0, 0))
+        screen.fill((255, 255, 255))
+        background = pygame.image.load('resources/interfaces/border.png')
+        screen.blit(background, (0, 0))
+        renderMapTerrain()
 
         for event in pygame.event.get():
             # Handle non-keyboard input
@@ -144,9 +177,17 @@ def playing_loop():
                 quit()
 
         # UI Bottons
+        botton('PAUSE', (0, 0, 0), 5, screen_h - 55, 112, 50, (100, 255, 180),
+               (0, 150, 0), 'pause')
+        botton('PAUSE', (0, 0, 0), 5 + 112 + 1, screen_h - 55, 112, 50,
+               (100, 255, 180), (0, 150, 0), 'pause')
+        """
+        terrain = pygame.image.load('resources/terrain/grass.png')
+        terrain = pygame.transform.scale(terrain, (40, 40))
+        screen.blit(terrain, (235, 5))
+        """
 
-        botton('PAUSE', (0, 0, 0), screen_w-5, screen_h - 50,
-               150, 50, (100, 255, 180), (0, 150, 0), 'pause')
+        #botton('O', (0, 0, 0), 235, 5, 40, 40, (100, 255, 180), (0, 150, 0), 'pause')
 
         # Keep track of frames
         pygame.display.update()

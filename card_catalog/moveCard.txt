@@ -1,5 +1,4 @@
 Name|Step|Description
-Walk|1|The Character moves 1 step.
-Run|2|The Character moves 2 steps.
-Rush|3|The Character moves 3 steps.
-Sprint|4|The Character moves 4 steps.
+Walk|1| The Whisper increases one additional move to the original step.
+Run|2| The Whisper increases two additional moves to the original step.
+Rush|3| The Whisper increases three moves to the original step.
