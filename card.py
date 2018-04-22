@@ -49,6 +49,30 @@ class SpellCard(Card):
 
   def generateCard(self):
     pass
+    file = open('card_catalog/spellCard.txt', 'r')
+    file_r = file.read()
+    end_num = file_r.count("\n") + 1
+    random.seed()
+    picked_line = random.randrange(0,end_num)
+    file.close()
+
+    file = open('card_catalog/spellCard.txt', 'r')
+    file_r = file.read()
+    end_num = file_r.count("\n") + 1
+    random.seed()
+    picked_line = random.randrange(1,end_num)
+    file.close()
+
+    file = open('card_catalog/spellCard.txt', 'r')
+    stats = ""
+    count = 0
+    for line in file:
+      if count == picked_line:
+        stats = line.strip().split("|")
+        break
+      count += 1
+    file.close()
+    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stat[6])
 
 """  No need
   #Spell Card Effects
