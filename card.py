@@ -100,15 +100,18 @@ class MoveCard(Card):
   def getStep(self):
     return self.step
 
-  def moveCharacter(self, character, Position):
-    pass
-
   def generateCard(self, cardCatalog):
       x = cardCatalog.split('|')
       for j in x:
           self.name = x[0]
           self.step = x[1]
           self.description = x[2]
+
+class AttackCard(Card):
+  def __init__(self, name, description, attack):
+    Card.__init__(self, name, description)
+    self.type = "Attack Card"
+    self.attack = attack
 
 
 
