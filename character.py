@@ -248,6 +248,11 @@ class Character():
 
     def useMoveCard(self, moveCard, map):
         self.find_where_can_go(moveCard, map)
+        x, y = input("please enter the coordinate you want to go to").strip().split()
+        x = int(x)
+        y = int(y)
+        desired_position = Position(x, y)
+        self.setPosition(desired_position)
 
 
 

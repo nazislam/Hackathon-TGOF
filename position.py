@@ -17,3 +17,6 @@ class Position:
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
+
+    def print_position(self):
+        print(self.x,self.y,sep=" ", end= "\n")

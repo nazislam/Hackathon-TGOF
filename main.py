@@ -36,6 +36,6 @@ if __name__ == '__main__':
     for i in range(players_num):
         players.append(create_player())
     ach = players[0]
-    ach.setPosition(position.Position(5,5))
     mc = card.MoveCard("abc","abc",4)
     ach.useMoveCard(mc, map)
+    ach.getPosition().
