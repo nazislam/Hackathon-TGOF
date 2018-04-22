@@ -23,8 +23,11 @@ class Pair:
     def set_terrain(self, terrain):
         self.terrain = terrain
 
-    def set_obj(self, obj, type):
+    def set_obj(self, obj, type = "nothing"):
         self.obj = obj
+        self.type = type
+
+    def set_type(self, type):
         self.type = type
 
 class Maps:
@@ -62,6 +65,20 @@ class Maps:
                 if line[i] == '-':
                     self.coordinate[row][i].set_terrain(terrain.Swamp())
             row += 1
+
+    def delete(self, x, y):
+        self.coordinate[x][y].set_obj(None)
+        self.coordinate[x][y].set_type("nothing")
+        sign = "."
+        if self.coordinate[x][y].terrain.get_type() == "Grass":
+            sign = "."
+        if self.coordinate[x][y].terrain.get_type() == "Mount":
+            sign = "^"
+        if self.coordinate[x][y].terrain.get_type() == "River":
+            sign = "*"
+        if self.coordinate[x][y].terrain.get_type() == "Swamp":
+            sign = "-"
+        self.picture[x] = self.picture[x][:y - 1] + sign + self.picture[x][y:]
 
     def get_terrain(self):
         return self.coordinate
