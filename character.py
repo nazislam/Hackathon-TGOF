@@ -240,7 +240,7 @@ class Character():
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
                     top += 1
             bottom += 1
-        file = open("maps/map2.txt", "w")
+        file = open("map2/map2.txt", "w")
         for i in modified_map:
             file.write(i)
 
