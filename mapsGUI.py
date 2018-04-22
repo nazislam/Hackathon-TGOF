@@ -4,8 +4,8 @@ import terrain
 from position import Position
 import itemBox
 import card
-maxxx = 36
-maxyy = 96
+maxxx = 14
+maxyy = 26
 class Pair:
     def __init__(self, obj, terrain, type = "nothing"):
         self.obj = obj
@@ -45,7 +45,7 @@ class Maps:
                 #self.picture[i].append(".")
 
     def print_map(self):
-        file = open("map2/map.txt", "w")
+        file = open("map3/map.txt", "w")
         for i in range(self.maxx):
             for j in range(self.maxy):
                 file.write(self.picture[i][j])
