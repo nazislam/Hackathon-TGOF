@@ -21,7 +21,18 @@ class Character():
             self.weapon = Weapon("Bow", "", 0, 0, 0, 0)
             self.armor = Armor("Leather Armor", "", 0)
             self.boots = Boot("Warboots", "", 0)
-
+        elif self.type == "Mage":
+            self.weapon = Weapon("Staff", "", 0, 0, 0, 0)
+            self.armor = Armor("Cloth Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
+        elif self.type == "Knight":
+            self.weapon = Weapon("Sword", "", 0, 0, 0, 0)
+            self.armor = Armor("Chain Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
+        else:
+            self.weapon = Weapon("Hammer", "", 0, 0, 0, 0)
+            self.armor = Armor("Plate Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
 
     def genereateMoveCards(self, numOfCards):
       fs = open('./card_catalog/moveCard', 'r')
