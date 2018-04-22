@@ -6,31 +6,31 @@ import maps
 from item import *
 
 
-def createAcher():
+def createAcher(i):
     x = random.randint(0, maps.maxx - 1)
     y = random.randint(0, maps.maxy - 1)
-    return Character(50, 1, 5, 20, 30, 40, 4, Position(3, 6), 'Archer')
+    return Character(50, 1, 5, 20, 30, 40, 4, Position(x, y), 'Archer',i)
 
 
-def createMage():
+def createMage(i):
     x = random.randint(0, maps.maxx)
     y = random.randint(0, maps.maxy)
-    return Character(100, 2, 5, 20, 34, 40, 40, Position(6, 7), 'Mage')
+    return Character(100, 2, 5, 20, 34, 40, 40, Position(x, y), 'Mage', i)
 
 
-def createKnight():
+def createKnight(i):
     x = random.randint(0, maps.maxx)
     y = random.randint(0, maps.maxy)
-    return Character(80, 1, 50, 35, 70, 40, 40, Position(x, y), 'Knight')
+    return Character(80, 1, 50, 35, 70, 40, 40, Position(x, y), 'Knight', i)
 
 
-def createWarrior():
+def createWarrior(i):
     x = random.randint(0, maps.maxx)
     y = random.randint(0, maps.maxy)
-    return Character(50, 3, 10, 20, 30, 40, 40, Position(x, y), 'Warrior')
+    return Character(50, 3, 10, 20, 30, 40, 40, Position(x, y), 'Warrior', i)
 
 class Character():
-    def __init__(self, hp, level, speed, luck, attack, defense, attackRange, position, characterType):
+    def __init__(self, hp, level, speed, luck, attack, defense, attackRange, position, characterType, ID):
         self.hp = hp
         self.level = level
         self.speed = speed
@@ -40,6 +40,7 @@ class Character():
         self.attackRange = attackRange
         self.position = position
         self.type = characterType
+        self.ID = ID
         self.hand = []
         for i in range(6):
             self.addCard(card.generateCard())
@@ -74,6 +75,9 @@ class Character():
 
     def addCard(self, card):
         self.hand.append(card)
+
+    def __eq__(self, other):
+        return self.ID == other.ID
 
     # getter functions
     def getHp(self):
@@ -181,7 +185,7 @@ class Character():
         steps = [0]
         top = 1
         bottom = 0
-        modified_map = map.get_map()
+        modified_map = map.get_map().copy()
         while bottom < top:
             position = elements[bottom]
             cur_step = steps[bottom]
@@ -300,6 +304,8 @@ class Character():
             y = pos.y
             if map.coordinate[x][y].get_type() == "Player":
                 cant_go.append(Position(x, y))
+        prex = self.getPosition().x
+        prey = self.getPosition().y
         print("You can't go to", len(cant_go), "points")
         for i in cant_go:
             print(i)
@@ -311,8 +317,10 @@ class Character():
         map.coordinate[x][y].terrain.stepable = True
         if map.coordinate[x][y].get_type() == "Card":
             self.addCard(map.coordinate[x][y].get_obj())
-            map.coordinate[x][y].set_obj(None, "nothing")
+        map.picture[x] = map.picture[x][:y - 1] + "P" + map.picture[x][y:]
+        map.coordinate[x][y].set_obj(self, "Player")
         self.setPosition(desired_position)
+        map.delete(prex, prey)
 
     def useSpellCard(self,card):
         self.buff.append(card)
@@ -328,7 +336,7 @@ class Character():
         steps = [0]
         top = 1
         bottom = 0
-        modified_map = map.get_map()
+        modified_map = map.get_map().copy()
         while bottom < top:
             position = elements[bottom]
             cur_step = steps[bottom]
@@ -337,7 +345,8 @@ class Character():
             new_position = Position(tryx, tryy)
             char = "0"
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
-                if cur_step + 1 <= rangeatk:
+                terrain = map.coordinate[tryx][tryy]
+                if cur_step + 1 <= rangeatk and not(terrain.get_type() == "Player" or terrain.get_type() == "Card"):
                     passed.append(new_position)
                     top += 1
                     elements.append(new_position)
@@ -380,8 +389,19 @@ class Character():
         return elements
 
     def useAttackCard(self, card, map):
-        places = self.find_where_can_attack(map)
         atk = card.getAttack() + self.getAttack()
+        x, y = input("please enter the coordinate you want to attack").strip().split()
+        x = int(x)
+        y = int(y)
+        obj = map.coordinate[x][y].get_obj()
+        type = map.coordinate[x][y].get_type()
+        if type != "Player":
+            return -1, -1
+        obj.setHp(obj.getHp() - atk)
+        return x, y
+
+    def check_attack_range(self, map):
+        places = self.find_where_can_attack(map)
         can_attack = []
         for i in range(1, len(places)):
             pos = places[i]
@@ -392,8 +412,4 @@ class Character():
         print("You can attack", len(can_attack), "targer")
         for i in can_attack:
             print(i)
-        x, y = input("please enter the coordinate you want to attack").strip().split()
-        x = int(x)
-        y = int(y)
-        obj = map.coordinate[x][y].get_obj()
-        obj.setHp(obj.getHp() - atk)
+        return len(can_attack)
