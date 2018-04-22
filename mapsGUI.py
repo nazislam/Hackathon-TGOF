@@ -19,7 +19,10 @@ class Pair:
         return self.obj
 
     def get_type(self):
-        return self.type
+        if self.type != "Player":
+            return self.type
+        else:
+            return self.type + str(self.obj.ID)
 
     def set_terrain(self, terrain):
         self.terrain = terrain
@@ -45,7 +48,7 @@ class Maps:
                 #self.picture[i].append(".")
 
     def print_map(self):
-        file = open("map3/map.txt", "w")
+        file = open("map3/map1.txt", "w")
         for i in range(self.maxx):
             for j in range(self.maxy):
                 file.write(self.picture[i][j])
