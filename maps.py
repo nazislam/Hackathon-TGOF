@@ -1,4 +1,7 @@
+import random
+
 import terrain
+from position import Position
 import card
 class Pair:
     def __init__(self, obj, terrain):
@@ -67,9 +70,14 @@ class Maps:
                 file.write(terrain.get_type())
             file.write("\n")
 
-    def set_obj(self):
-        for i in range(20):
-            pass
+    def set_obj(self, times):
+        for i in range(times):
+            card = card.Card.generateCard()
+            x = random.randint(0, self.maxx - 1)
+            y = random.randint(0, self.maxy - 1)
+            self.coordinate[x][y].set_obj(card)
+
+
 
 if __name__ == '__main__':
     pass

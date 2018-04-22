@@ -48,7 +48,7 @@ class Character():
                 self.description = x[2]
 
     def addCard(self, card):
-        self.hand
+        self.hand.append(card.Card.generateCard())
 
     # getter functions
     def getHp(self):
