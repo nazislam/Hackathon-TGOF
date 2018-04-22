@@ -1,8 +1,24 @@
 from item import *
-from random import random
+import random
+
+def generateBox():
+    chance = random.randint(0, 100) % 3
+    if chance == 0:
+        return WeaponBox()
+    elif chance == 1:
+        return ArmorBox()
+    else:
+        return bootsBox()
+
+class Box:
+    def __init__(self):
+        pass
+
+    def generate(self):
+        pass
 
 
-class WeaponBox:
+class WeaponBox(Box):
     def __init__(self):
         self.weapon = "Has Not Been Generated"
         self.type = "Weapon"
@@ -13,7 +29,7 @@ class WeaponBox:
     def setWeapon(self, weapon):
         self.weapon = weapon
 
-    def generateWeapon(self, character):
+    def generate(self, character):
         weaponDict = {
             "Archer": "Bow",
             "Mage": "Staff",
@@ -37,7 +53,7 @@ class WeaponBox:
 
         weaponLevel = 0
         
-        random_level = random()
+        random_level = random.random()
         if random_level < 0.70:
             weaponLevel = 1
         elif 0.70 < random_level and random_level < 0.90:
@@ -80,8 +96,8 @@ class WeaponBox:
         self.setWeapon(weapon)
 
 
-class ArmorBox:
-    def __init__(self, armor):
+class ArmorBox(Box):
+    def __init__(self):
         self.armor = "Has Not Been Generated"
         self.type = "Armor"
 
@@ -91,7 +107,7 @@ class ArmorBox:
     def setArmor(self, armor):
         self.armor = armor
 
-    def generateArmor(self, character):
+    def generate(self, character):
         armorDict = {
             "Archer": "Leather Armor",
             "Mage": "Cloth Armor",
@@ -116,7 +132,7 @@ class ArmorBox:
 
         armorLevel = 0
         
-        random_level = random()
+        random_level = random.random()
         if random_level() < 0.70:
             armorLevel = 1
         elif 0.70 < random_level and random_level < 0.90:
@@ -159,8 +175,8 @@ class ArmorBox:
         self.setArmor(armor)
 
 
-class bootsBox:
-    def __init__(self, boots):
+class bootsBox(Box):
+    def __init__(self):
         self.boots = "Has Not Been Generated"
         self.type = "Boots"
 
@@ -170,12 +186,12 @@ class bootsBox:
     def setBoots(self, boots):
         self.boots = boots
 
-    def generateBoots(self, character):
+    def generate(self, character):
 
         bootsName = "Warboots"
         bootsLevel = 0
         
-        random_level = random()
+        random_level = random.random()
         if random_level() < 0.70:
             bootsLevel = 1
         elif 0.70 < random_level and random_level < 0.90:

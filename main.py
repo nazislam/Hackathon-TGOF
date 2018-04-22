@@ -33,6 +33,7 @@ if __name__ == '__main__':
     map = maps.Maps()
     map.create_map()
     map.set_random_card(number_random_card)
+    map.set_random_box(number_random_card)
     print_welcome()
     players_num = number_players()
     players = []
@@ -76,13 +77,15 @@ if __name__ == '__main__':
                     x, y = player.useAttackCard(user_card, map)
                     if x == -1:
                         print("Are you sure you don't need a new pair of glasses?")
+                        input("Press enter to continue")
                         continue
                     obj = map.coordinate[x][y].get_obj()
                     print("Successful hit. Enermy's Hp is " + str(obj.getHp()))
+                    input("Press enter to continue")
                     if obj.getHp() <= 0:
                         map.delete(x, y)
                         players.remove(obj)
-                if len(players) == 1:
-                    print("Player number " + str(i + 1) + " won")
-                    exit()
+                #if len(players) == 1:
+                    #print("Player number " + str(i + 1) + " won")
+                    #exit()
         #break
