@@ -1,3 +1,2 @@
 Name|AttackPoint|Description
 Normal Attack|10|The Character moves 1 step.
-

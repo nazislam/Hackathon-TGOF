@@ -3,7 +3,6 @@ from items import Armor
 from items import Boot
 from random import random
 
-
 class WeaponBox:
     def __init__(self):
         self.weapon = "Has Not Been Generated"
