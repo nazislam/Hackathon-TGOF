@@ -21,4 +21,5 @@ file.close()
 
 print(stats)"""
 
-testCard = card.generateMove()
+testCard = card.generateSpell()
+print(testCard)

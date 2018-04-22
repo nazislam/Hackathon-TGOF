@@ -43,5 +43,16 @@ if __name__ == '__main__':
         map.coordinate[x][y].set_obj(players[i])
     while(1):
         for i in range(players_num):
-            print("Player number", i, "'s turn")
+            print("Player number " +  str(i + 1) + "'s turn")
+            player = players[i]
+            player.addCard(card.generateCard())
+            player.buff = []
+            print(len(player.hand))
+            for j in range(len(player.hand)):
+                print(str(j) + ". " + str(player.hand[j]))
+            print(str(len(player.hand)) + ". " + "Quit turn.")
+            choice = int(input("Please enter your move"))
+            if choice == len(player.hand):
+                break
+
         break

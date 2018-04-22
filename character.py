@@ -44,7 +44,6 @@ class Character():
         for i in range(6):
             self.addCard(card.generateCard())
         self.buff = [] #Store Spell Cards
-        self.hand = []
 
         if self.type == "Archer":
             self.weapon = Weapon("Bow", "", 0, 0, 0, 0, 10)
