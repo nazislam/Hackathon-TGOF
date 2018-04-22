@@ -38,7 +38,7 @@ def generateMove():
             break
         count += 1
     file.close()
-    return MoveCard(stats[0], stats[2], stats[1])
+    return MoveCard(stats[0], int(stats[2]), stats[1])
 
 
 def generateAttack():
@@ -91,12 +91,12 @@ class Card:
 class SpellCard(Card):
     def __init__(self, name, description, hp, attack, defense, luck, speed, attRange):
         Card.__init__(self, name, description)
-        self.hp = hp
-        self.attack = attack
-        self.defense = defense
-        self.luck = luck
-        self.speed = speed
-        self.attRange = attRange
+        self.hp = int(hp)
+        self.attack = int(attack)
+        self.defense = int(defense)
+        self.luck = int(luck)
+        self.speed = int(speed)
+        self.attRange = int(attRange)
         self.type = "Spell Card"
 
     def __str__(self):
@@ -185,7 +185,7 @@ class MoveCard(Card):
     def __init__(self, name, description, step):
         Card.__init__(self, name, description)
         self.type = "Move Card"
-        self.step = step
+        self.step = int(step)
 
     # Getters
     def getStep(self):
@@ -206,7 +206,7 @@ class AttackCard(Card):
     def __init__(self, name, description, attack):
         Card.__init__(self, name, description)
         self.type = "Attack Card"
-        self.attack = attack
+        self.attack = int(attack)
 
     def getAttack(self):
         return self.attack
