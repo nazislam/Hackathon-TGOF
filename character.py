@@ -9,7 +9,7 @@ from item import *
 def createAcher(i):
     x = random.randint(0, maps.maxx - 1)
     y = random.randint(0, maps.maxy - 1)
-    return Character(50, 1, 5, 20, 30, 40, 4, Position(x, y), 'Archer',i)
+    return Character(50, 1, 5, 20, 30, 40, 4, Position(9, 33), 'Archer',i)
 
 
 def createMage(i):
@@ -194,7 +194,8 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card" \
+                        or terrain.get_type() == "Box":
                     passed.append(new_position)
                 elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -208,7 +209,7 @@ class Character():
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "River" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -219,7 +220,8 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card" \
+                        or terrain.get_type() == "Box":
                     passed.append(new_position)
                 elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -233,7 +235,7 @@ class Character():
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "River" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -244,7 +246,8 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx >= 0 and tryx < map.maxx and tryy >= 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card" \
+                        or terrain.get_type() == "Box":
                     passed.append(new_position)
                 elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -258,7 +261,7 @@ class Character():
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "River" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -269,7 +272,8 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card"\
+                        or terrain.get_type() == "Box":
                     passed.append(new_position)
                 elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
@@ -283,7 +287,7 @@ class Character():
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "River" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -317,6 +321,15 @@ class Character():
         map.coordinate[x][y].terrain.stepable = True
         if map.coordinate[x][y].get_type() == "Card":
             self.addCard(map.coordinate[x][y].get_obj())
+        if map.coordinate[x][y].get_type() == "Box":
+            box = map.coordinate[x][y].get_obj()
+            box.generate(self)
+            if box.type == "Boots":
+                self.boots = box.boots
+            elif box.type == "Armor":
+                self.armor = box.armor
+            elif box.type == "Weapon":
+                self.weapon = box.weapon
         map.picture[x] = map.picture[x][:y - 1] + "P" + map.picture[x][y:]
         map.coordinate[x][y].set_obj(self, "Player")
         self.setPosition(desired_position)

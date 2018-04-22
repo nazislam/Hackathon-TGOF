@@ -2,9 +2,10 @@ import random
 
 import terrain
 from position import Position
+import itemBox
 import card
-maxx = 36
-maxy = 96
+maxxx = 14
+maxyy = 26
 class Pair:
     def __init__(self, obj, terrain, type = "nothing"):
         self.obj = obj
@@ -33,18 +34,18 @@ class Pair:
 class Maps:
     def __init__(self):
         self.coordinate = []
-        self.maxx = 36
-        self.maxy = 96
+        self.maxx = maxxx
+        self.maxy = maxyy
         self.picture = []
         for i in range(self.maxx):
             self.coordinate.append([])
-            #self.picture.append([])
+            self.picture.append([])
             for j in range(self.maxy):
                 self.coordinate[i].append(Pair(None, terrain.Terrain()))
-                #self.picture[i].append(".")
+                self.picture[i].append(".")
 
     def print_map(self):
-        file = open("map2/map1.txt", "w")
+        file = open("map3/map.txt", "w")
         for i in range(self.maxx):
             for j in range(self.maxy):
                 file.write(self.picture[i][j])
@@ -103,10 +104,19 @@ class Maps:
             self.coordinate[x][y].terrain.stepable = False
             self.picture[x] = self.picture[x][:y - 1] + "C" + self.picture[x][y:]
 
+    def set_random_box(self, times):
+        for i in range(times):
+            my_box = itemBox.generateBox()
+            x = random.randint(0, self.maxx - 1)
+            y = random.randint(0, self.maxy - 1)
+            self.coordinate[x][y].set_obj(my_box, "Box")
+            self.coordinate[x][y].terrain.stepable = False
+            self.picture[x] = self.picture[x][:y - 1] + "B" + self.picture[x][y:]
+
 
 if __name__ == '__main__':
     pass
-    #map = Maps()
-    #map.print_map()
+    map = Maps()
+    map.print_map()
     #map.create_map()
     #map.print_terrain()
