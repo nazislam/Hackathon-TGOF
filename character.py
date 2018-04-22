@@ -1,7 +1,7 @@
 from position import Position
 import card
 import maps
-from items import *
+#from items import *
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, attackRange, position, characterType):
