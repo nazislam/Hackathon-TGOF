@@ -3,30 +3,31 @@ import random
 from position import Position
 import card
 import maps
+import mapsGUI
 from item import *
 
 
 def createAcher(i):
-    x = random.randint(0, maps.maxx - 1)
-    y = random.randint(0, maps.maxy - 1)
+    x = random.randint(0, mapsGUI.maxx - 1)
+    y = random.randint(0, mapsGUI.maxy - 1)
     return Character(50, 1, 1, 20, 30, 40, 4, Position(x, y), 'Archer',i)
 
 
 def createMage(i):
-    x = random.randint(0, maps.maxx)
-    y = random.randint(0, maps.maxy)
+    x = random.randint(0, mapsGUI.maxx)
+    y = random.randint(0, mapsGUI.maxy)
     return Character(50, 1, 2, 30, 34, 40, 40, Position(x, y), 'Mage', i)
 
 
 def createKnight(i):
-    x = random.randint(0, maps.maxx)
-    y = random.randint(0, maps.maxy)
+    x = random.randint(0, mapsGUI.maxx)
+    y = random.randint(0, mapsGUI.maxy)
     return Character(80, 1, 3, 35, 70, 40, 40, Position(x, y), 'Knight', i)
 
 
 def createWarrior(i):
-    x = random.randint(0, maps.maxx)
-    y = random.randint(0, maps.maxy)
+    x = random.randint(0, mapsGUI.maxx)
+    y = random.randint(0, mapsGUI.maxy)
     return Character(100,1, 3, 20, 30, 40, 40, Position(x, y), 'Warrior', i)
 
 class Character():

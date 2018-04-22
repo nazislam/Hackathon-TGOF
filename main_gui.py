@@ -29,7 +29,7 @@ clock = pygame.time.Clock()
 
 # Player's ID
 global player_id
-player_id =  [1,2]
+player_id =  [0,1]
 
 # Map's Property
 global map
@@ -128,8 +128,8 @@ def botton(smg, smgc, x, y, w, h, ic, ac, action="None"):
                 menu_loop()
 
             elif action == 'selecting':
+                selecting_loop(0)
                 selecting_loop(1)
-                selecting_loop(2)
 
             elif action == 'quit':
                 pygame.quit()
@@ -167,7 +167,7 @@ def botton2(img, img2, x, y, action="None"):
             elif action == 'menu':
                 menu_loop()
 
-            elif action in [1,2]:
+            elif action in [0,1]:
                 if img is archer:
                     char = character.createAcher(player_id[action])
                 elif img is mage:
@@ -178,12 +178,15 @@ def botton2(img, img2, x, y, action="None"):
                     char = character.createWarrior(player_id[action])
             
                 players.append(char)
-                position = players[i].getPosition()
+                position = players[action].getPosition()
                 x = position.getx()
                 y = position.gety()
-                map.coordinate[x][y].set_obj(players[i], "Player")
+                map.coordinate[x][y].set_obj(players[action], "Player")
                 map.picture[x] = map.picture[x][:y - 1] + "P" + map.picture[x][y:]
                 map.coordinate[x][y].terrain.stepable = False
+
+                if action == 1:
+                    playing_loop()
 
 
             elif action == 'quit':
