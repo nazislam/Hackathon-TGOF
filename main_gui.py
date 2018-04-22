@@ -5,6 +5,10 @@ Framework : Pygame
 
 import pygame
 import random
+import character
+import card
+import maps
+import position
 
 import game
 
@@ -79,6 +83,9 @@ def botton(smg, smgc, x, y, w, h, ic, ac, action="None"):
             elif action == 'menu':
                 menu_loop()
 
+            elif action == 'selecting':
+                selecting_loop()
+
             elif action == 'quit':
                 pygame.quit()
                 quit()
@@ -87,6 +94,44 @@ def botton(smg, smgc, x, y, w, h, ic, ac, action="None"):
         pygame.draw.rect(screen, ic, (x, y, w, h))
     print_text1(screen, smg, 'freesansbold.ttf', int(h * 0.4), smgc,
                 (2 * (x) + w) / 2, (2 * (y) + h) / 2)
+
+#def botton2(smg, smgc, x, y, w, h, ic, ac, action="None"):
+
+def botton2(img, img2, x, y, action="None"):
+    mouse = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+    #center_x = x + 100
+    #center_y = y + 100
+
+    #distance = ((mouse[0]-center_x)**2 + (mouse[1]-center_y)**2)**0.5
+    #distance > 50**2
+    if x < mouse[0] < x+200 and y < mouse[1] < y+200:
+        screen.blit(img, (x,y))
+
+        if click[0] == 1 and action != None:
+            if action == 'start':
+                #reset()
+                playing_loop()
+
+            elif action == 'pause':
+                paused()
+
+            elif action == 'unpause':
+                unpause()
+
+            elif action == 'menu':
+                menu_loop()
+
+            elif action == 'selecting':
+                selecting_loop()
+
+            elif action == 'quit':
+                pygame.quit()
+                quit()
+
+    else:
+        screen.blit(img2, (x,y))
+
 
 
 # Print text position by center coor
@@ -146,15 +191,59 @@ def menu_loop():
 
         botton('START', (0, 0, 0), (screen_w / 2 - 75),
                (screen_h * 1 / 2 + 50), 150, 50, (100, 255, 180), (0, 150, 0),
-               'start')
+               'selecting')
 
         pygame.display.update()
         clock.tick(60)
 
 
 def selecting_loop():
-    pass
+    intro = True
+    screen.fill((0, 0, 0))
+    background = pygame.image.load('resources/interfaces/background/interface_selection.png')
+    screen.blit(background, (0,0))
 
+    archer = pygame.image.load('resources/interfaces/character_button/archer.png')
+    archer = pygame.transform.scale(archer, (200, 200))
+
+    knight = pygame.image.load('resources/interfaces/character_button/knight.png')
+    knight = pygame.transform.scale(knight, (200, 200))
+
+    mage = pygame.image.load('resources/interfaces/character_button/mage.png')
+    mage = pygame.transform.scale(mage, (200, 200))
+
+    warrior = pygame.image.load('resources/interfaces/character_button/warrior.png')
+    warrior = pygame.transform.scale(warrior, (200, 200))
+
+##
+
+    archer2 = pygame.image.load('resources/interfaces/character_button/archer2.png')
+    archer2 = pygame.transform.scale(archer2, (200, 200))
+
+    knight2 = pygame.image.load('resources/interfaces/character_button/knight2.png')
+    knight2 = pygame.transform.scale(knight2, (200, 200))
+
+    mage2 = pygame.image.load('resources/interfaces/character_button/mage2.png')
+    mage2 = pygame.transform.scale(mage2, (200, 200))
+
+    warrior2 = pygame.image.load('resources/interfaces/character_button/warrior2.png')
+    warrior2 = pygame.transform.scale(warrior2, (200, 200))
+
+
+    while intro:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        botton2(archer, archer2, 55, 210, action="start")
+        botton2(knight, knight2, 350, 210, action="start")
+        botton2(mage, mage2, 700, 210, action="start")
+        botton2(warrior, warrior2, 1010, 210, action="start")
+
+        pygame.display.update()
+        clock.tick(60)
+    
 
 def playing_loop():
     global start_time
@@ -177,9 +266,9 @@ def playing_loop():
                 quit()
 
         # UI Bottons
-        botton('PAUSE', (0, 0, 0), 5, screen_h - 55, 112, 50, (100, 255, 180),
+        botton('PAUSE', (0, 0, 0), 5, screen_h - 55, 110, 50, (100, 255, 180),
                (0, 150, 0), 'pause')
-        botton('PAUSE', (0, 0, 0), 5 + 112 + 1, screen_h - 55, 112, 50,
+        botton('PAUSE', (0, 0, 0), 5 + 110 + 5, screen_h - 55, 110, 50,
                (100, 255, 180), (0, 150, 0), 'pause')
         """
         terrain = pygame.image.load('resources/terrain/grass.png')

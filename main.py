@@ -60,7 +60,8 @@ if __name__ == '__main__':
                 for j in range(len(player.hand)):
                     print(str(j) + ". " + str(player.hand[j]))
                 print(str(len(player.hand)) + ". " + "Quit turn.")
-                choice = int(input("Please enter your move"))
+                
+                choice = int(input("Please enter your move: "))
                 if choice == len(player.hand):
                     break
                 user_card = player.hand.pop(choice)
