@@ -54,5 +54,9 @@ if __name__ == '__main__':
             choice = int(input("Please enter your move"))
             if choice == len(player.hand):
                 break
-
+            user_card = player.hand.pop(choice)
+            if user_card.getType() == "Spell Card":
+                player.useSpellCard(user_card)
+            elif user_card.getType() == "Move Card":
+                player.useMoveCard(user_card, map)
         break

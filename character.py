@@ -3,7 +3,7 @@ import random
 from position import Position
 import card
 import maps
-from items import *
+from item import *
 
 
 def createAcher():
@@ -48,19 +48,19 @@ class Character():
         if self.type == "Archer":
             self.weapon = Weapon("Bow", "", 0, 0, 0, 0, 10)
             self.armor = Armor("Leather Armor", "", 0, 0)
-            self.boots = Boot("Warboots", "", 0, 0)
+            self.boots = Boots("Warboots", "", 0, 0)
         elif self.type == "Mage":
             self.weapon = Weapon("Staff", "", 0, 0, 0, 0, 5)
             self.armor = Armor("Cloth Armor", "", 0, 0)
-            self.boots = Boot("Warboots", "", 0, 0)
+            self.boots = Boots("Warboots", "", 0, 0)
         elif self.type == "Knight":
             self.weapon = Weapon("Sword", "", 0, 0, 0, 0, 1)
             self.armor = Armor("Chain Armor", "", 0, 0)
-            self.boots = Boot("Warboots", "", 0, 0)
+            self.boots = Boots("Warboots", "", 0, 0)
         else:
             self.weapon = Weapon("Hammer", "", 0, 0, 0, 0, 1)
             self.armor = Armor("Plate Armor", "", 0, 0)
-            self.boots = Boot("Warboots", "", 0, 0)
+            self.boots = Boots("Warboots", "", 0, 0)
 
     """def genereateMoveCards(self, numOfCards):
         fs = open('./card_catalog/moveCard', 'r')
@@ -303,10 +303,8 @@ class Character():
         if card.getHp() != 0: # Gain/lose HP from the Spell Card
             self.setHp(self.getHp() + card.getHp())
 
-    def find_where_can_attack(self):
+    def find_where_can_attack(self, map):
         rangeatk = self.getAttackRange()
-        map = maps.Maps()
-        map.create_map()
         position = self.getPosition()
         passed = []
         passed.append(position)
@@ -321,6 +319,7 @@ class Character():
             tryx = position.getx() + 1
             tryy = position.gety()
             new_position = Position(tryx, tryy)
+            char = "0"
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 if cur_step + 1 <= rangeatk:
                     passed.append(new_position)
