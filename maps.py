@@ -52,7 +52,7 @@ class Maps:
             file.write("\n")
 
     def create_map(self):
-        file = open("map2/map.txt", "r")
+        file = open("map3/map.txt", "r")
         row = 0
         for line in file:
             self.picture.append(line)

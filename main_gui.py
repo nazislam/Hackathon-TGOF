@@ -5,6 +5,10 @@ Framework : Pygame
 
 import pygame
 import random
+import character
+import card
+import maps
+import position
 
 import game
 
@@ -79,6 +83,9 @@ def botton(smg, smgc, x, y, w, h, ic, ac, action="None"):
             elif action == 'menu':
                 menu_loop()
 
+            elif action == 'selecting':
+                selecting_loop()
+
             elif action == 'quit':
                 pygame.quit()
                 quit()
@@ -146,15 +153,52 @@ def menu_loop():
 
         botton('START', (0, 0, 0), (screen_w / 2 - 75),
                (screen_h * 1 / 2 + 50), 150, 50, (100, 255, 180), (0, 150, 0),
-               'start')
+               'selecting')
 
         pygame.display.update()
         clock.tick(60)
 
 
 def selecting_loop():
-    pass
+    intro = True
+    screen.fill((0, 0, 0))
+    background = pygame.image.load('resources/interfaces/background/interface_selection.png')
+    screen.blit(background, (0,0))
 
+    archer = pygame.image.load('resources/interfaces/character_button/archer.png')
+    archer = pygame.transform.scale(archer, (200, 200))
+    screen.blit(archer, (55,210))
+
+    knight = pygame.image.load('resources/interfaces/character_button/knight.png')
+    knight = pygame.transform.scale(knight, (200, 200))
+    screen.blit(knight, (350,210))
+
+    mage = pygame.image.load('resources/interfaces/character_button/mage.png')
+    mage = pygame.transform.scale(mage, (200, 200))
+    screen.blit(mage, (700,210))
+
+    warrior = pygame.image.load('resources/interfaces/character_button/warrior.png')
+    warrior = pygame.transform.scale(warrior, (200, 200))
+    screen.blit(warrior, (1010,210))
+    """
+    mountain = pygame.image.load('resources/terrain/mountain.png')
+    mountain = pygame.transform.scale(mountain, (40, 40))
+    river = pygame.image.load('resources/terrain/river.png')
+    river = pygame.transform.scale(river, (40, 40))
+    swamp = pygame.image.load('resources/terrain/swamp.png')
+    swamp = pygame.transform.scale(swamp, (40, 40))
+    terrainDict = {".": grass, "^": mountain, "*": river, "-": swamp}
+    """
+
+    while intro:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        pygame.display.update()
+        clock.tick(60)
+    
 
 def playing_loop():
     global start_time
