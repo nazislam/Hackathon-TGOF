@@ -255,8 +255,6 @@ class Character():
         desired_position = Position(x, y)
         self.setPosition(desired_position)
 
-
-
     def useCard(self,card):
         if card.getType() == "Spell Card":
             self.buff.append(card)

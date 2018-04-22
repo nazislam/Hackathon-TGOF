@@ -38,4 +38,4 @@ if __name__ == '__main__':
     ach = players[0]
     mc = card.MoveCard("abc","abc",4)
     ach.useMoveCard(mc, map)
-    ach.getPosition().
+    ach.getPosition().print_position()
