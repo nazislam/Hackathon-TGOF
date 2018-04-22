@@ -5,6 +5,30 @@ import card
 import maps
 from items import *
 
+
+def createAcher():
+    x = random.randint(0, maps.maxx)
+    y = random.randint(0, maps.maxy)
+    return Character(50, 1, 5, 20, 30, 40, 4, Position(x, y), 'Archer')
+
+
+def createMage():
+    x = random.randint(0, maps.maxx)
+    y = random.randint(0, maps.maxy)
+    return Character(100, 2, 5, 20, 34, 40, 40, Position(x, y), 'Mage')
+
+
+def createKnight():
+    x = random.randint(0, maps.maxx)
+    y = random.randint(0, maps.maxy)
+    return Character(80, 1, 50, 35, 70, 40, 40, Position(x, y), 'Knight')
+
+
+def createWarrior():
+    x = random.randint(0, maps.maxx)
+    y = random.randint(0, maps.maxy)
+    return Character(50, 3, 10, 20, 30, 40, 40, Position(x, y), 'Warrior')
+
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, attackRange, position, characterType):
         self.hp = hp
@@ -23,21 +47,21 @@ class Character():
         self.hand = []
 
         if self.type == "Archer":
-            self.weapon = Weapon("Bow", "", 0, 0, 0, 0)
-            self.armor = Armor("Leather Armor", "", 0)
-            self.boots = Boot("Warboots", "", 0)
+            self.weapon = Weapon("Bow", "", 0, 0, 0, 0, 10)
+            self.armor = Armor("Leather Armor", "", 0, 0)
+            self.boots = Boot("Warboots", "", 0, 0)
         elif self.type == "Mage":
-            self.weapon = Weapon("Staff", "", 0, 0, 0, 0)
-            self.armor = Armor("Cloth Armor", "", 0)
-            self.boots = Boot("Warboots", "", 0)
+            self.weapon = Weapon("Staff", "", 0, 0, 0, 0, 5)
+            self.armor = Armor("Cloth Armor", "", 0, 0)
+            self.boots = Boot("Warboots", "", 0, 0)
         elif self.type == "Knight":
-            self.weapon = Weapon("Sword", "", 0, 0, 0, 0)
-            self.armor = Armor("Chain Armor", "", 0)
-            self.boots = Boot("Warboots", "", 0)
+            self.weapon = Weapon("Sword", "", 0, 0, 0, 0, 1)
+            self.armor = Armor("Chain Armor", "", 0, 0)
+            self.boots = Boot("Warboots", "", 0, 0)
         else:
-            self.weapon = Weapon("Hammer", "", 0, 0, 0, 0)
-            self.armor = Armor("Plate Armor", "", 0)
-            self.boots = Boot("Warboots", "", 0)
+            self.weapon = Weapon("Hammer", "", 0, 0, 0, 0, 1)
+            self.armor = Armor("Plate Armor", "", 0, 0)
+            self.boots = Boot("Warboots", "", 0, 0)
 
     """def genereateMoveCards(self, numOfCards):
         fs = open('./card_catalog/moveCard', 'r')
@@ -348,23 +372,5 @@ class Character():
         y = int(y)
         return (x, y, atk)
 
-    def createAcher(self):
-        x = random.randint(0, maps.maxx)
-        y = random.randint(0, maps.maxy)
-        return Character(50, 1, 5, 20, 30, 40, 4,Position(x, y), 'Archer')
 
-    def createMage(self):
-        x = random.randint(0, maps.maxx)
-        y = random.randint(0, maps.maxy)
-        return Character(100, 2, 5, 20, 34, 40, 40, Position(x, y), 'Mage')
-
-    def createKnight(self):
-        x = random.randint(0, maps.maxx)
-        y = random.randint(0, maps.maxy)
-        return Character(80, 1, 50, 35, 70, 40, 40,Position(x, y), 'Knight')
-
-    def createWarrior(self):
-        x = random.randint(0, maps.maxx)
-        y = random.randint(0, maps.maxy)
-        return Character(50, 3, 10, 20, 30, 40, 40, Position(x, y), 'Warrior')
 
