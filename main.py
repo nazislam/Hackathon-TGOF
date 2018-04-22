@@ -13,16 +13,16 @@ def create_player():
     while (1):
         type = input("What kind of character do you want(archer, mage, knight, warrior)? Please enter the first character")
         if type.lower() == "a":
-            cha = character.Character.createAcher()
+            cha = character.createAcher()
             return cha
         if type.lower() == 'm':
-            cha = character.Character.createMage()
+            cha = character.createMage()
             return cha
         if type.lower() == 'k':
-            cha = character.Character.createKnight()
+            cha = character.createKnight()
             return cha
         if type.lower() == 'w':
-            cha = character.Character.createWarrior()
+            cha = character.createWarrior()
             return cha
         print("Invalid input, please try again.")
 
