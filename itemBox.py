@@ -91,7 +91,7 @@ class ArmorBox:
     def setArmor(self, armor):
         self.armor = armor
 
-    def geneArmor(self, character):
+    def generateArmor(self, character):
         armorDict = {
             "Archer": "Leather Armor",
             "Mage": "Cloth Armor",
@@ -172,7 +172,7 @@ class bootsBox:
 
     def generateBoots(self, character):
 
-        bootsName = "Warbootss"
+        bootsName = "Warboots"
         bootsLevel = 0
         
         random_level = random()
