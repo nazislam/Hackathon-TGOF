@@ -28,8 +28,10 @@ def create_player():
 
 
 if __name__ == '__main__':
+    number_random_card = 10
     map = maps.Maps()
     map.create_map()
+    map.set_obj(number_random_card)
     print_welcome()
     players_num = number_players()
     players = []

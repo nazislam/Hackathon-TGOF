@@ -14,6 +14,9 @@ class Character():
         self.attackRange = attackRange
         self.position = position
         self.type = characterType
+        self.hand = []
+        for i in range(6):
+            self.addCard(card.generateCard)
         self.buff = [] #Store Spell Cards
         self.hand = []
 
@@ -43,6 +46,9 @@ class Character():
                 self.name = x[0]
                 self.step = x[1]
                 self.description = x[2]
+
+    def addCard(self, card):
+        self.hand.append(card.Card.generateCard())
 
     # getter functions
     def getHp(self):
