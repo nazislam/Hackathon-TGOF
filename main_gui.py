@@ -282,7 +282,14 @@ def renderMapUpdate():
 
 
 
-    terrainDict = {".": grass, "^": mountain, "*": river, "-": swamp, "Card" : card, "Box" : box, "Player0" : player0, "Player1": player1}
+    terrainDict = {".": grass,
+                   "^": mountain,
+                   "*": river,
+                   "-": swamp,
+                   "Card" : card,
+                   "Box" : box,
+                   "Player0" : player0,
+                   "Player1": player1}
 
     startPos = 235
     file = open("map3/map.txt", "r")
