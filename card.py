@@ -66,7 +66,7 @@ class SpellCard(Card):
         break
       count += 1
     file.close()
-    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stat[6])
+    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stats[6])
 
 """  No need
   #Spell Card Effects
@@ -155,7 +155,7 @@ class MoveCard(Card):
         break
       count += 1
     file.close()
-    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stat[6])
+    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stats[6])
 
 class AttackCard(Card):
     def __init__(self, name, description, attack):

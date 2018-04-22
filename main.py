@@ -41,5 +41,5 @@ if __name__ == '__main__':
         x = position.getx()
         y = position.gety()
         map.coordinate[x][y].set_obj(players[i])
-    
+
 
