@@ -186,6 +186,10 @@ def botton2(img, img2, x, y, action="None"):
 
             elif action == 'unpause':
                 unpause()
+            
+            elif action == 'selecting':
+                selecting_loop(0)
+                selecting_loop(1)
 
             elif action == 'menu':
                 menu_loop()
@@ -342,18 +346,40 @@ def renderMapUpdate():
 def menu_loop():
     intro = True
     screen.fill((0, 0, 0))
-    print_text1(screen, 'Whispers of War', 'resources/fonts/arial.ttf', 100,
-                (255, 255, 255), screen_w / 2, 300)
+    #print_text1(screen, 'Whispers of War', 'resources/fonts/arial.ttf', 100,(255, 255, 255), screen_w / 2, 300)
+    switch = False
+
+    background = pygame.image.load('resources/interfaces/interface_start_logo.png')
+    screen.blit(background, (0, 0))
 
     while intro:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+        
+        if switch == True:
+            background = pygame.image.load('resources/interfaces/black.png')
+            screen.blit(background, (0, 0))
+            botton('START', (0, 0, 0), (screen_w / 2 - 75),(screen_h * 1 / 2 + 400), 150, 50, (100, 255, 180), (0, 150, 0),'selecting')
+            logo = pygame.image.load('resources/interfaces/interface_title.png')
+            logo = pygame.transform.scale(logo, (540, 160))
+            botton2(logo, logo, screen_w/2 - 265, screen_h/2 - 250, action="selecting")
 
-        botton('START', (0, 0, 0), (screen_w / 2 - 75),
-               (screen_h * 1 / 2 + 50), 150, 50, (100, 255, 180), (0, 150, 0),
-               'selecting')
+            start = pygame.image.load('resources/interfaces/buttons/start.png')
+            start_on_click = pygame.image.load('resources/interfaces/buttons/start_on_click.png')
+            exit = pygame.image.load('resources/interfaces/buttons/exit.png')
+            exit_on_click = pygame.image.load('resources/interfaces/buttons/exit_on_click.png')
+            #logo = pygame.transform.scale(logo, (540, 160))
+            botton2(start, start_on_click, screen_w/2 - 135, screen_h/2 , action = "selecting")
+            botton2(exit, exit_on_click, screen_w/2 - 135, screen_h/2 + 200 , action = "quit")
+
+            #botton('START', (0,0,0), (screen_w/2-75), (screen_h*1/2+50), 150, 50, (100, 255, 180), (0, 150, 0),'start')
+
+        click = pygame.mouse.get_pressed()
+        if click[0] == 1:
+            switch = True
+            
 
         pygame.display.update()
         clock.tick(60)
@@ -374,8 +400,8 @@ def selecting_loop(player_number):
                 quit()
 
         botton2(archer, archer2, 55, 210, player_number)
-        botton2(knight, knight2, 350, 210, player_number)
-        botton2(mage, mage2, 700, 210, player_number)
+        botton2(mage, mage2, 350, 210, player_number)
+        botton2(knight, knight2, 700, 210, player_number)
         botton2(warrior, warrior2, 1010, 210, player_number)
 
         pygame.display.update()
