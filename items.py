@@ -10,9 +10,10 @@ class Item:
         return self.description
 
 class Weapon:
-    def __init__(self, name, description, level, attack, defense, speed,
+    def __init__(self, name, description, type, level, attack, defense, speed,
                  attRange):
         Item.__init__(self, name, description)
+        self.type = type
         self.level = level
         self.attack = attack
         self.defense = defense
@@ -36,8 +37,9 @@ class Weapon:
 
 
 class Armor:
-    def __init__(self, name, description, level, defense):
+    def __init__(self, name, description, type, level, defense):
         Item.__init__(self, name, description)
+        self.type = type
         self.level = level
         self.defense = defense
 
