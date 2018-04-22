@@ -18,6 +18,13 @@ class Card:
 
   def generateCard(self):
     pass
+    random_type = random.randrange(0,100)%3 
+    if random_type == 0:
+      return SpellCard.generateCard()
+    elif random_type == 1:
+      return MoveCard.generateCard()
+    else:
+      return AttackCard.generateCard()
 
 class SpellCard(Card):
   def __init__(self, name, description, hp, attack, defense, luck, speed, attRange):
@@ -132,21 +139,14 @@ class MoveCard(Card):
           self.description = x[2]"""
 
   def generateCard(self):
-    file = open('card_catalog/spellCard.txt', 'r')
-    file_r = file.read()
-    end_num = file_r.count("\n") + 1
-    random.seed()
-    picked_line = random.randrange(0,end_num)
-    file.close()
-
-    file = open('card_catalog/spellCard.txt', 'r')
+    file = open('card_catalog/moveCard.txt', 'r')
     file_r = file.read()
     end_num = file_r.count("\n") + 1
     random.seed()
     picked_line = random.randrange(1,end_num)
     file.close()
 
-    file = open('card_catalog/spellCard.txt', 'r')
+    file = open('card_catalog/moveCard.txt', 'r')
     stats = ""
     count = 0
     for line in file:
@@ -155,7 +155,7 @@ class MoveCard(Card):
         break
       count += 1
     file.close()
-    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stats[6])
+    return MoveCard(stats[0],stats[3],stats[1])
 
 class AttackCard(Card):
     def __init__(self, name, description, attack):
@@ -166,10 +166,25 @@ class AttackCard(Card):
     def getAttack(self):
         return self.attack
 
-
-
     def generateCard(self):
       pass
+      file = open('card_catalog/attackCard.txt', 'r')
+      file_r = file.read()
+      end_num = file_r.count("\n") + 1
+      random.seed()
+      picked_line = random.randrange(1,end_num)
+      file.close()
+
+      file = open('card_catalog/attackCard.txt', 'r')
+      stats = ""
+      count = 0
+      for line in file:
+        if count == picked_line:
+          stats = line.strip().split("|")
+          break
+        count += 1
+      file.close()
+      return AttackCard(stats[0],stats[2],stats[1])
 
 
 
