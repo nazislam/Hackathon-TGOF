@@ -19,7 +19,7 @@ class Pair:
 class Maps:
     def __init__(self):
         self.coordinate = []
-        self.maxx = 64
+        self.maxx = 36
         self.maxy = 96
         self.picture = []
         for i in range(self.maxx):
@@ -30,14 +30,14 @@ class Maps:
                 #self.picture[i].append(".")
 
     def print_map(self):
-        file = open("maps/map.txt", "w")
-        for i in range(64):
-            for j in range(96):
+        file = open("map2/map.txt", "w")
+        for i in range(self.maxx):
+            for j in range(self.maxy):
                 file.write(self.picture[i][j])
             file.write("\n")
 
     def create_map(self):
-        file = open("maps/map1.txt", "r")
+        file = open("map2/map.txt", "r")
         row = 0
         for line in file:
             self.picture.append(line)
@@ -59,7 +59,7 @@ class Maps:
         return self.picture
 
     def print_terrain(self):
-        file = open("maps/terrain.txt", "w")
+        file = open("map2/terrain.txt", "w")
         for i in range(self.maxx):
             for j in range(self.maxy):
                 terrain = self.coordinate[i][j].get_terrain()
