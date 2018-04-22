@@ -13,7 +13,7 @@ screen_w = 1280
 screen_h = 720
 
 # Surface
-screen = pygame.display.set_mode((screen_w,screen_h))
+screen = pygame.display.set_mode((screen_w, screen_h))
 
 # Title
 pygame.display.set_caption('Hangman')
@@ -29,6 +29,7 @@ def unpause():
     pause = False
     pause_end = pygame.time.get_ticks()
     start_time = start_time + pause_end - pause_start
+
 
 # Pause the Game with another screen
 def paused():
@@ -124,6 +125,10 @@ def menu_loop():
         clock.tick(60)
 
 
+def selecting_loop():
+    pass
+
+
 def playing_loop():
     global start_time
     start_time = pygame.time.get_ticks()
@@ -140,11 +145,13 @@ def playing_loop():
 
         # UI Bottons
 
-        botton('PAUSE', (0, 0, 0), screen_w/2 - int(150/2), screen_h-50, 150, 50, (100, 255, 180), (0, 150, 0),'pause')
+        botton('PAUSE', (0, 0, 0), screen_w / 2 - int(150 / 2), screen_h - 50,
+               150, 50, (100, 255, 180), (0, 150, 0), 'pause')
 
         # Keep track of frames
         pygame.display.update()
         clock.tick(60)
 
+
 if __name__ == "__main__":
-  menu_loop()
+    menu_loop()
