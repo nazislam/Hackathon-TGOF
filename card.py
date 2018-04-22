@@ -76,6 +76,7 @@ class Card:
         self.name = name
         self.type = "This card has no type!"
         self.description = description
+        self.max_num = 8
 
     # Getters
     def getName(self):
