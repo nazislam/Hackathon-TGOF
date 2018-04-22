@@ -1,10 +1,6 @@
 from position import Position
-<<<<<<< HEAD
-from card import Card
-=======
 import card
 import maps
->>>>>>> 9a132f427f47ae4297f1d0f17619dd8dc8200cdf
 
 class Character():
     def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
@@ -23,9 +19,6 @@ class Character():
         self.buff = [] #Store Spell Cards
         self.hand = []
 
-<<<<<<< HEAD
-    def genereateMoveCards(self,numOfCards):
-=======
     """def genereateMoveCards(numOfCards):
 >>>>>>> 9a132f427f47ae4297f1d0f17619dd8dc8200cdf
       fs = open('./card_catalog/moveCard', 'r')
