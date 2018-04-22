@@ -3,30 +3,31 @@ import random
 from position import Position
 import card
 import maps
+import mapsGUI
 from item import *
 
 
 def createAcher(i):
-    x = random.randint(0, maps.maxx - 1)
-    y = random.randint(0, maps.maxy - 1)
-    return Character(50, 1, 1, 20, 30, 40, 4, Position(9, 33), 'Archer',i)
+    x = random.randint(0, mapsGUI.maxx - 1)
+    y = random.randint(0, mapsGUI.maxy - 1)
+    return Character(50, 1, 1, 20, 30, 40, 4, Position(x, y), 'Archer',i)
 
 
 def createMage(i):
-    x = random.randint(0, maps.maxx)
-    y = random.randint(0, maps.maxy)
+    x = random.randint(0, mapsGUI.maxx)
+    y = random.randint(0, mapsGUI.maxy)
     return Character(50, 1, 2, 30, 34, 40, 40, Position(x, y), 'Mage', i)
 
 
 def createKnight(i):
-    x = random.randint(0, maps.maxx)
-    y = random.randint(0, maps.maxy)
+    x = random.randint(0, mapsGUI.maxx)
+    y = random.randint(0, mapsGUI.maxy)
     return Character(80, 1, 3, 35, 70, 40, 40, Position(x, y), 'Knight', i)
 
 
 def createWarrior(i):
-    x = random.randint(0, maps.maxx)
-    y = random.randint(0, maps.maxy)
+    x = random.randint(0, mapsGUI.maxx)
+    y = random.randint(0, mapsGUI.maxy)
     return Character(100,1, 3, 20, 30, 40, 40, Position(x, y), 'Warrior', i)
 
 class Character():
@@ -319,7 +320,7 @@ class Character():
         desired_position = Position(x, y)
         map.coordinate[self.getPosition().x][self.getPosition().y].terrain.stepable = True
         map.coordinate[x][y].terrain.stepable = True
-        if map.coordinate[x][y].get_type() == "Card":
+        if map.coordinate[x][y].get_type() == "Card" and len(self.hand) < 8:
             self.addCard(map.coordinate[x][y].get_obj())
         if map.coordinate[x][y].get_type() == "Box":
             box = map.coordinate[x][y].get_obj()
