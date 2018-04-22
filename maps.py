@@ -3,6 +3,8 @@ import random
 import terrain
 from position import Position
 import card
+maxx = 36
+maxy = 96
 class Pair:
     def __init__(self, obj, terrain):
         self.obj = obj
@@ -72,10 +74,10 @@ class Maps:
 
     def set_obj(self, times):
         for i in range(times):
-            card = card.Card.generateCard()
+            my_card = card.generateCard()
             x = random.randint(0, self.maxx - 1)
             y = random.randint(0, self.maxy - 1)
-            self.coordinate[x][y].set_obj(card)
+            self.coordinate[x][y].set_obj(my_card)
 
 
 

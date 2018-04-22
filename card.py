@@ -1,5 +1,72 @@
 import random
 
+def generateCard():
+    random_type = random.randrange(0, 100) % 3
+    if random_type == 0:
+        return generateSpell()
+    elif random_type == 1:
+        return generateMove()
+    else:
+        return generateAttack()
+
+def generateSpell():
+    file = open('card_catalog/spellCard.txt', 'r')
+    file_r = file.read()
+    end_num = file_r.count("\n") + 1
+    random.seed()
+    picked_line = random.randrange(1,end_num)
+    file.close()
+
+    file = open('card_catalog/spellCard.txt', 'r')
+    stats = ""
+    count = 0
+    for line in file:
+      if count == picked_line:
+        stats = line.strip().split("|")
+        break
+      count += 1
+    file.close()
+    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stats[6])
+
+def generateMove():
+    file = open('card_catalog/moveCard.txt', 'r')
+    file_r = file.read()
+    end_num = file_r.count("\n") + 1
+    random.seed()
+    picked_line = random.randrange(1,end_num)
+    file.close()
+
+    file = open('card_catalog/moveCard.txt', 'r')
+    stats = ""
+    count = 0
+    for line in file:
+      if count == picked_line:
+        stats = line.strip().split("|")
+        break
+      count += 1
+    file.close()
+    return MoveCard(stats[0],stats[3],stats[1])
+
+def generateAttack():
+      file = open('card_catalog/attackCard.txt', 'r')
+      file_r = file.read()
+      end_num = file_r.count("\n") + 1
+      random.seed()
+      picked_line = random.randrange(1,end_num)
+      file.close()
+
+      file = open('card_catalog/attackCard.txt', 'r')
+      stats = ""
+      count = 0
+      for line in file:
+        if count == picked_line:
+          stats = line.strip().split("|")
+          break
+        count += 1
+      file.close()
+      return AttackCard(stats[0],stats[2],stats[1])
+
+
 class Card:
   def __init__(self, name, description):
     self.name = name
@@ -16,15 +83,7 @@ class Card:
   def getType(self):
     return self.type
 
-  def generateCard(self):
-    pass
-    random_type = random.randrange(0,100)%3 
-    if random_type == 0:
-      return SpellCard.generateCard()
-    elif random_type == 1:
-      return MoveCard.generateCard()
-    else:
-      return AttackCard.generateCard()
+
 
 class SpellCard(Card):
   def __init__(self, name, description, hp, attack, defense, luck, speed, attRange):
@@ -56,24 +115,7 @@ class SpellCard(Card):
   def getAttackRange(self):
     return self.attRange
 
-  def generateCard(self):
-    file = open('card_catalog/spellCard.txt', 'r')
-    file_r = file.read()
-    end_num = file_r.count("\n") + 1
-    random.seed()
-    picked_line = random.randrange(1,end_num)
-    file.close()
 
-    file = open('card_catalog/spellCard.txt', 'r')
-    stats = ""
-    count = 0
-    for line in file:
-      if count == picked_line:
-        stats = line.strip().split("|")
-        break
-      count += 1
-    file.close()
-    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stats[6])
 
 """  No need
   #Spell Card Effects
@@ -138,24 +180,7 @@ class MoveCard(Card):
           self.step = x[1]
           self.description = x[2]"""
 
-  def generateCard(self):
-    file = open('card_catalog/moveCard.txt', 'r')
-    file_r = file.read()
-    end_num = file_r.count("\n") + 1
-    random.seed()
-    picked_line = random.randrange(1,end_num)
-    file.close()
 
-    file = open('card_catalog/moveCard.txt', 'r')
-    stats = ""
-    count = 0
-    for line in file:
-      if count == picked_line:
-        stats = line.strip().split("|")
-        break
-      count += 1
-    file.close()
-    return MoveCard(stats[0],stats[3],stats[1])
 
 class AttackCard(Card):
     def __init__(self, name, description, attack):
@@ -166,24 +191,6 @@ class AttackCard(Card):
     def getAttack(self):
         return self.attack
 
-    def generateCard(self):
-      file = open('card_catalog/attackCard.txt', 'r')
-      file_r = file.read()
-      end_num = file_r.count("\n") + 1
-      random.seed()
-      picked_line = random.randrange(1,end_num)
-      file.close()
-
-      file = open('card_catalog/attackCard.txt', 'r')
-      stats = ""
-      count = 0
-      for line in file:
-        if count == picked_line:
-          stats = line.strip().split("|")
-          break
-        count += 1
-      file.close()
-      return AttackCard(stats[0],stats[2],stats[1])
 
 
 

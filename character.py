@@ -1,3 +1,5 @@
+import random
+
 from position import Position
 import card
 import maps
@@ -16,7 +18,7 @@ class Character():
         self.type = characterType
         self.hand = []
         for i in range(6):
-            self.addCard(card.generateCard)
+            self.addCard(card.generateCard())
         self.buff = [] #Store Spell Cards
         self.hand = []
 
@@ -37,7 +39,7 @@ class Character():
             self.armor = Armor("Plate Armor", "", 0)
             self.boots = Boot("Warboots", "", 0)
 
-    def genereateMoveCards(self, numOfCards):
+    """def genereateMoveCards(self, numOfCards):
         fs = open('./card_catalog/moveCard', 'r')
         f1 = fs.readlines()
         for i in numOfCards:
@@ -45,10 +47,10 @@ class Character():
                 x = fs.split('|')
                 self.name = x[0]
                 self.step = x[1]
-                self.description = x[2]
+                self.description = x[2]"""
 
     def addCard(self, card):
-        self.hand.append(card.Card.generateCard())
+        self.hand.append(card)
 
     # getter functions
     def getHp(self):
@@ -265,7 +267,6 @@ class Character():
         for i in modified_map:
             file.write(i)
 
-
     def useMoveCard(self, moveCard, map):
         self.find_where_can_go(moveCard, map)
         x, y = input("please enter the coordinate you want to go to").strip().split()
@@ -347,8 +348,23 @@ class Character():
         y = int(y)
         return (x, y, atk)
 
-archer = Character(50, 1, 5, 20, 30, 40, 4,Position(3, 6), 'Archer')
-mage = Character(100, 2, 5, 20, 34, 40, 40, Position(4, 6), 'Mage')
-knight = Character(80, 1, 50, 35, 70, 40, 40,Position(3, 6), 'Knight')
-warrior = Character(50, 3, 10, 20, 30, 40, 40, Position(3, 6), 'Warrior')
+    def createAcher(self):
+        x = random.randint(0, maps.maxx)
+        y = random.randint(0, maps.maxy)
+        return Character(50, 1, 5, 20, 30, 40, 4,Position(x, y), 'Archer')
+
+    def createMage(self):
+        x = random.randint(0, maps.maxx)
+        y = random.randint(0, maps.maxy)
+        return Character(100, 2, 5, 20, 34, 40, 40, Position(x, y), 'Mage')
+
+    def createKnight(self):
+        x = random.randint(0, maps.maxx)
+        y = random.randint(0, maps.maxy)
+        return Character(80, 1, 50, 35, 70, 40, 40,Position(x, y), 'Knight')
+
+    def createWarrior(self):
+        x = random.randint(0, maps.maxx)
+        y = random.randint(0, maps.maxy)
+        return Character(50, 3, 10, 20, 30, 40, 40, Position(x, y), 'Warrior')
 

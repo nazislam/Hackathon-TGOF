@@ -13,16 +13,16 @@ def create_player():
     while (1):
         type = input("What kind of character do you want(archer, mage, knight, warrior)? Please enter the first character")
         if type.lower() == "a":
-            cha = character.archer
+            cha = character.Character.createAcher()
             return cha
         if type.lower() == 'm':
-            cha = character.mage
+            cha = character.Character.createMage()
             return cha
         if type.lower() == 'k':
-            cha = character.knight
+            cha = character.Character.createKnight()
             return cha
         if type.lower() == 'w':
-            cha = character.warrior
+            cha = character.Character.createWarrior()
             return cha
         print("Invalid input, please try again.")
 
@@ -41,5 +41,7 @@ if __name__ == '__main__':
         x = position.getx()
         y = position.gety()
         map.coordinate[x][y].set_obj(players[i])
-
-
+    while(1):
+        for i in range(players_num):
+            print("Player number", i, "'s turn")
+        break
