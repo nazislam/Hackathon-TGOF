@@ -67,6 +67,10 @@ class Maps:
                 file.write(terrain.get_type())
             file.write("\n")
 
+    def set_obj(self):
+        for i in range(20):
+            pass
+
 if __name__ == '__main__':
     pass
     #map = Maps()
