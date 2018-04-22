@@ -1,24 +1,38 @@
 from position import Position
 import card
 import maps
+from items import *
 
 class Character():
-    def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
+    def __init__(self, hp, level, speed, luck, attack, defense, attackRange, position, characterType):
         self.hp = hp
         self.level = level
         self.speed = speed
         self.luck = luck
         self.attack = attack
         self.defense = defense
-        self.weapon = weapon
-        self.armor = armor
-        self.boots = boots
         self.attackRange = attackRange
         self.position = position
         self.type = characterType
         self.buff = [] #Store Spell Cards
         self.hand = []
 
+        if self.type == "Archer":
+            self.weapon = Weapon("Bow", "", 0, 0, 0, 0)
+            self.armor = Armor("Leather Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
+        elif self.type == "Mage":
+            self.weapon = Weapon("Staff", "", 0, 0, 0, 0)
+            self.armor = Armor("Cloth Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
+        elif self.type == "Knight":
+            self.weapon = Weapon("Sword", "", 0, 0, 0, 0)
+            self.armor = Armor("Chain Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
+        else:
+            self.weapon = Weapon("Hammer", "", 0, 0, 0, 0)
+            self.armor = Armor("Plate Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
 
     def genereateMoveCards(self, numOfCards):
       fs = open('./card_catalog/moveCard', 'r')
@@ -386,8 +400,9 @@ class Character():
         y = int(y)
         return Position(x, y)
 
-
+"""
 archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6), 'Archer')
 mage = Character(30, 2, 5, 20, 34, 40, 'staff', 40, 10, 80, Position(3, 6), 'Mage')
 knight = Character(80, 1, 50, 35, 70, 40, 'sword', 40, 0, 80, Position(3, 6), 'Knight')
 warrior = Character(50, 3, 10, 20, 30, 40, 'hammer', 40, 10, 80, Position(3, 6), 'Warrior')
+"""
