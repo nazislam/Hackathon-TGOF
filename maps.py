@@ -1,4 +1,5 @@
 import terrain
+import card
 class Pair:
     def __init__(self, obj, terrain):
         self.obj = obj
