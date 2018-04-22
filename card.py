@@ -1,3 +1,5 @@
+import random
+
 class Card:
   def __init__(self, name, description):
     self.name = name
@@ -48,7 +50,6 @@ class SpellCard(Card):
     return self.attRange
 
   def generateCard(self):
-    pass
     file = open('card_catalog/spellCard.txt', 'r')
     file_r = file.read()
     end_num = file_r.count("\n") + 1
@@ -130,15 +131,38 @@ class MoveCard(Card):
   def getStep(self):
       return self.step
 
-  def generateCard(self, cardCatalog):
+  """def generateCard(self, cardCatalog):
       x = cardCatalog.split('|')
       for j in x:
           self.name = x[0]
           self.step = x[1]
-          self.description = x[2]
+          self.description = x[2]"""
 
   def generateCard(self):
-    pass
+    file = open('card_catalog/spellCard.txt', 'r')
+    file_r = file.read()
+    end_num = file_r.count("\n") + 1
+    random.seed()
+    picked_line = random.randrange(0,end_num)
+    file.close()
+
+    file = open('card_catalog/spellCard.txt', 'r')
+    file_r = file.read()
+    end_num = file_r.count("\n") + 1
+    random.seed()
+    picked_line = random.randrange(1,end_num)
+    file.close()
+
+    file = open('card_catalog/spellCard.txt', 'r')
+    stats = ""
+    count = 0
+    for line in file:
+      if count == picked_line:
+        stats = line.strip().split("|")
+        break
+      count += 1
+    file.close()
+    return SpellCard(stats[0],stats[7],stats[1],stats[2],stats[3],stats[4],stats[5],stat[6])
 
 class AttackCard(Card):
     def __init__(self, name, description, attack):
@@ -151,8 +175,8 @@ class AttackCard(Card):
 
 
 
-  def generateCard(self):
-    pass
+    def generateCard(self):
+      pass
 
 
 
