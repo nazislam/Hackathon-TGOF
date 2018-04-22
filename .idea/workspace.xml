@@ -4,7 +4,6 @@
     <list default="true" id="54986fb7-95c3-4252-9b95-b99ae1e4df62" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/character.py" beforeDir="false" afterPath="$PROJECT_DIR$/character.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map2/map2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/map2/map2.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="character.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/character.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="256" lean-forward="true" selection-start-line="256" selection-end-line="256" />
+            <state relative-caret-position="397">
+              <caret line="387" lean-forward="true" selection-start-line="387" selection-end-line="387" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -31,8 +30,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="40" selection-end-column="38" />
+            <state relative-caret-position="346">
+              <caret line="32" column="19" lean-forward="true" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -62,10 +61,13 @@
     <findStrings>
       <find>map</find>
       <find>add</find>
+      <find>9</find>
     </findStrings>
     <replaceStrings>
       <replace>modified_map</replace>
       <replace>append</replace>
+      <replace>rangeatk - 1</replace>
+      <replace>rangemv - 1</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -329,6 +331,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/items.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/position.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -338,8 +343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="40" selection-end-column="38" />
+        <state relative-caret-position="346">
+          <caret line="32" column="19" lean-forward="true" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
@@ -348,8 +353,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="256" lean-forward="true" selection-start-line="256" selection-end-line="256" />
+        <state relative-caret-position="397">
+          <caret line="387" lean-forward="true" selection-start-line="387" selection-end-line="387" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
