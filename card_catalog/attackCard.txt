@@ -1,2 +1,4 @@
 Name|AttackPoint|Description
-Normal Attack|10|The Character moves 1 step.
+Riposte|5| A vicious strike that deals 5 pyshical damage to the enemy.
+Mortal Strike|10| A vicious strike that deals 10 pyshical damage to the enemy.
+Titan's grip|15| A vicious strike that deals 15 pyshical damage to the enemy.

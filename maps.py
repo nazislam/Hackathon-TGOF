@@ -11,8 +11,6 @@ class Pair:
         self.obj = obj
         self.terrain = terrain
         self.type = type
-        self.maxx = maxxx
-        self.maxy = maxyy
 
     def get_terrain(self):
         return self.terrain
@@ -36,8 +34,8 @@ class Pair:
 class Maps:
     def __init__(self):
         self.coordinate = []
-        self.maxx = 36
-        self.maxy = 96
+        self.maxx = maxxx
+        self.maxy = maxyy
         self.picture = []
         for i in range(self.maxx):
             self.coordinate.append([])
