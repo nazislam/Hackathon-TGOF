@@ -7,15 +7,15 @@ from item import *
 
 
 def createAcher():
-    x = random.randint(0, maps.maxx)
-    y = random.randint(0, maps.maxy)
-    return Character(50, 1, 5, 20, 30, 40, 4, Position(x, y), 'Archer')
+    x = random.randint(0, maps.maxx - 1)
+    y = random.randint(0, maps.maxy - 1)
+    return Character(50, 1, 5, 20, 30, 40, 4, Position(3, 6), 'Archer')
 
 
 def createMage():
     x = random.randint(0, maps.maxx)
     y = random.randint(0, maps.maxy)
-    return Character(100, 2, 5, 20, 34, 40, 40, Position(x, y), 'Mage')
+    return Character(100, 2, 5, 20, 34, 40, 40, Position(6, 7), 'Mage')
 
 
 def createKnight():
@@ -190,21 +190,21 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
                     passed.append(new_position)
-                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
                     top += 1
                     elements.append(new_position)
                     steps.append(cur_step + 1)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
                     passed.append(new_position)
                     elements.append(new_position)
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -215,21 +215,21 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
                     passed.append(new_position)
-                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
                     top += 1
                     elements.append(new_position)
                     steps.append(cur_step + 1)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
                     passed.append(new_position)
                     elements.append(new_position)
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -240,21 +240,21 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx >= 0 and tryx < map.maxx and tryy >= 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
                     passed.append(new_position)
-                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
                     top += 1
                     elements.append(new_position)
                     steps.append(cur_step + 1)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
                     passed.append(new_position)
                     elements.append(new_position)
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -265,21 +265,21 @@ class Character():
             new_position = Position(tryx, tryy)
             if tryx > 0 and tryx < map.maxx and tryy > 0 and tryy < map.maxy and not(new_position in passed):
                 terrain = map.coordinate[tryx][tryy]
-                if terrain.get_terrain().get_type() == "Mount" or terrain.terrain.stepable == False:
+                if terrain.get_terrain().get_type() == "Mount" or terrain.get_type() == "Player" or terrain.get_type() == "Card":
                     passed.append(new_position)
-                if terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Grass" and cur_step + 1 <= rangemv:
                     passed.append(new_position)
                     top += 1
                     elements.append(new_position)
                     steps.append(cur_step + 1)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step + 2 <= rangemv:
                     passed.append(new_position)
                     elements.append(new_position)
                     top += 1
                     steps.append(cur_step + 2)
                     modified_map[tryx] = modified_map[tryx][:tryy - 1] + "0" + modified_map[tryx][tryy:]
-                if terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
+                elif terrain.get_terrain().get_type() == "Swamp" and cur_step <= rangemv - 1:
                     passed.append(new_position)
                     elements.append(new_position)
                     steps.append(rangemv)
@@ -289,14 +289,29 @@ class Character():
         file = open("map2/map_move.txt", "w")
         for i in modified_map:
             file.write(i)
+        return elements
 
     def useMoveCard(self, moveCard, map):
-        self.find_where_can_go(moveCard, map)
+        places = self.find_where_can_go(moveCard, map)
+        cant_go = []
+        for i in range(1, len(places)):
+            pos = places[i]
+            x = pos.x
+            y = pos.y
+            if map.coordinate[x][y].get_type() == "Player":
+                cant_go.append(Position(x, y))
+        print("You can't go to", len(cant_go), "points")
+        for i in cant_go:
+            print(i)
         x, y = input("please enter the coordinate you want to go to").strip().split()
         x = int(x)
         y = int(y)
         desired_position = Position(x, y)
         map.coordinate[self.getPosition().x][self.getPosition().y].terrain.stepable = True
+        map.coordinate[x][y].terrain.stepable = True
+        if map.coordinate[x][y].get_type() == "Card":
+            self.addCard(map.coordinate[x][y].get_obj())
+            map.coordinate[x][y].set_obj(None, "nothing")
         self.setPosition(desired_position)
 
     def useSpellCard(self,card):
@@ -368,13 +383,17 @@ class Character():
         places = self.find_where_can_attack(map)
         atk = card.getAttack() + self.getAttack()
         can_attack = []
-        for i in range(1, places):
+        for i in range(1, len(places)):
             pos = places[i]
             x = pos.x
             y = pos.y
             if map.coordinate[x][y].get_type() == "Player":
                 can_attack.append(Position(x, y))
+        print("You can attack", len(can_attack), "targer")
+        for i in can_attack:
+            print(i)
         x, y = input("please enter the coordinate you want to attack").strip().split()
         x = int(x)
         y = int(y)
         obj = map.coordinate[x][y].get_obj()
+        obj.setHp(obj.getHp() - atk)

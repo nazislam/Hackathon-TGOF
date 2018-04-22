@@ -6,6 +6,9 @@ class Position:
     def getx(self):
         return self.x
 
+    def __str__(self):
+        return str(self.x) + " " + str(self.y)
+
     def gety(self):
         return self.y
 

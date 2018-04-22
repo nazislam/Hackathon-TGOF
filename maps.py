@@ -41,7 +41,7 @@ class Maps:
                 #self.picture[i].append(".")
 
     def print_map(self):
-        file = open("map2/map.txt", "w")
+        file = open("map2/map1.txt", "w")
         for i in range(self.maxx):
             for j in range(self.maxy):
                 file.write(self.picture[i][j])
@@ -83,6 +83,7 @@ class Maps:
             x = random.randint(0, self.maxx - 1)
             y = random.randint(0, self.maxy - 1)
             self.coordinate[x][y].set_obj(my_card, "Card")
+            self.coordinate[x][y].terrain.stepable = False
             self.picture[x] = self.picture[x][:y - 1] + "C" + self.picture[x][y:]
 
 

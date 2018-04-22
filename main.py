@@ -43,24 +43,27 @@ if __name__ == '__main__':
         map.coordinate[x][y].set_obj(players[i], "Player")
         map.picture[x] = map.picture[x][:y - 1] + "P" + map.picture[x][y:]
         map.coordinate[x][y].terrain.stepable = False
+    map.print_map()
     while(1):
         for i in range(players_num):
-            print("Player number " +  str(i + 1) + "'s turn")
-            player = players[i]
-            player.addCard(card.generateCard())
-            player.buff = []
-            print(len(player.hand))
-            for j in range(len(player.hand)):
-                print(str(j) + ". " + str(player.hand[j]))
-            print(str(len(player.hand)) + ". " + "Quit turn.")
-            choice = int(input("Please enter your move"))
-            if choice == len(player.hand):
-                continue
-            user_card = player.hand.pop(choice)
-            if user_card.getType() == "Spell Card":
-                player.useSpellCard(user_card)
-            elif user_card.getType() == "Move Card":
-                player.useMoveCard(user_card, map)
-            else:
-                player.useAttackCard(user_card, map)
-        break
+            while (1):
+                print("Player number " +  str(i + 1) + "'s turn")
+                player = players[i]
+                print("Your location is " + str(player.getPosition()))
+                player.addCard(card.generateCard())
+                player.buff = []
+                print(len(player.hand))
+                for j in range(len(player.hand)):
+                    print(str(j) + ". " + str(player.hand[j]))
+                print(str(len(player.hand)) + ". " + "Quit turn.")
+                choice = int(input("Please enter your move"))
+                if choice == len(player.hand):
+                    break
+                user_card = player.hand.pop(choice)
+                if user_card.getType() == "Spell Card":
+                    player.useSpellCard(user_card)
+                elif user_card.getType() == "Move Card":
+                    player.useMoveCard(user_card, map)
+                else:
+                    player.useAttackCard(user_card, map)
+        #break
