@@ -40,7 +40,8 @@ if __name__ == '__main__':
         position = players[i].getPosition()
         x = position.getx()
         y = position.gety()
-        map.coordinate[x][y].set_obj(players[i])
+        map.coordinate[x][y].set_obj(players[i], "Player")
+        map.coordinate[x][y].terrain.stepable = False
     while(1):
         for i in range(players_num):
             print("Player number " +  str(i + 1) + "'s turn")

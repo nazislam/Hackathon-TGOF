@@ -296,6 +296,7 @@ class Character():
         x = int(x)
         y = int(y)
         desired_position = Position(x, y)
+        map.coordinate[self.getPosition().x][self.getPosition().y].terrain.stepable = True
         self.setPosition(desired_position)
 
     def useSpellCard(self,card):

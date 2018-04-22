@@ -6,9 +6,10 @@ import card
 maxx = 36
 maxy = 96
 class Pair:
-    def __init__(self, obj, terrain):
+    def __init__(self, obj, terrain, type = "nothing"):
         self.obj = obj
         self.terrain = terrain
+        self.type = type
 
     def get_terrain(self):
         return self.terrain
@@ -16,11 +17,15 @@ class Pair:
     def get_obj(self):
         return self.obj
 
+    def get_type(self):
+        return self.type
+
     def set_terrain(self, terrain):
         self.terrain = terrain
 
-    def set_obj(self, obj):
+    def set_obj(self, obj, type):
         self.obj = obj
+        self.type = type
 
 class Maps:
     def __init__(self):
@@ -77,7 +82,7 @@ class Maps:
             my_card = card.generateCard()
             x = random.randint(0, self.maxx - 1)
             y = random.randint(0, self.maxy - 1)
-            self.coordinate[x][y].set_obj(my_card)
+            self.coordinate[x][y].set_obj(my_card, "Card")
 
 
 

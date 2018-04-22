@@ -38,7 +38,7 @@ def generateMove():
             break
         count += 1
     file.close()
-    return MoveCard(stats[0], int(stats[2]), stats[1])
+    return MoveCard(stats[0], stats[2], stats[1])
 
 
 def generateAttack():
