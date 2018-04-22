@@ -1,23 +1,26 @@
 from position import Position
 import card
 import maps
+from items import *
 
 class Character():
-    def __init__(self, hp, level, speed, luck, attack, defense, weapon, armor, boots, attackRange, position, characterType):
+    def __init__(self, hp, level, speed, luck, attack, defense, attackRange, position, characterType):
         self.hp = hp
         self.level = level
         self.speed = speed
         self.luck = luck
         self.attack = attack
         self.defense = defense
-        self.weapon = weapon
-        self.armor = armor
-        self.boots = boots
         self.attackRange = attackRange
         self.position = position
         self.type = characterType
         self.buff = [] #Store Spell Cards
         self.hand = []
+
+        if self.type == "Archer":
+            self.weapon = Weapon("Bow", "", 0, 0, 0, 0)
+            self.armor = Armor("Leather Armor", "", 0)
+            self.boots = Boot("Warboots", "", 0)
 
 
     def genereateMoveCards(self, numOfCards):
@@ -261,8 +264,9 @@ class Character():
             if card.getHp() != 0: # Gain/lose HP from the Spell Card
                 self.setHp(self.getHp() + card.getHp())
 
-
+"""
 archer = Character(50, 1, 5, 20, 30, 40, 'arch', 40, 10, 80, Position(3, 6), 'Archer')
 mage = Character(30, 2, 5, 20, 34, 40, 'staff', 40, 10, 80, Position(3, 6), 'Mage')
 knight = Character(80, 1, 50, 35, 70, 40, 'sword', 40, 0, 80, Position(3, 6), 'Knight')
 warrior = Character(50, 3, 10, 20, 30, 40, 'hammer', 40, 10, 80, Position(3, 6), 'Warrior')
+"""
