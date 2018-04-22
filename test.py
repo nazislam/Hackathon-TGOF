@@ -2,24 +2,15 @@ import random
 import os
 import card
 
-"""file = open('card_catalog/attackCard.txt', 'r')
-file_r = file.read()
-end_num = file_r.count("\n") + 1
-random.seed()
-picked_line = random.randrange(1,end_num)
-file.close()
+file = open("map3/map.txt", "r")
+char = file.read(1)
 
-file = open('card_catalog/attackCard.txt', 'r')
-stats = ""
-count = 0
-for line in file:
-    if count == picked_line:
-        stats = line.strip().split("|")
-        break
-    count += 1
-file.close()
+for i in range(14):
+    for k in range(27):
+        if char == "\n":
+            char = file.read(1)
+            continue
+        print(char, end= "|")
+        char = file.read(1)
 
-print(stats)"""
-
-testCard = card.generateSpell()
-print(testCard)
+    print()
