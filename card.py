@@ -98,7 +98,7 @@ class MoveCard(Card):
 
   #Getters
   def getStep(self):
-    return self.step
+      return self.step
 
   def generateCard(self, cardCatalog):
       x = cardCatalog.split('|')
@@ -108,10 +108,15 @@ class MoveCard(Card):
           self.description = x[2]
 
 class AttackCard(Card):
-  def __init__(self, name, description, attack):
-    Card.__init__(self, name, description)
-    self.type = "Attack Card"
-    self.attack = attack
+    def __init__(self, name, description, attack):
+        Card.__init__(self, name, description)
+        self.type = "Attack Card"
+        self.attack = attack
+
+    def getAttack(self):
+        return self.attack
+
+
 
 
 
