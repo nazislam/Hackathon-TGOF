@@ -167,7 +167,6 @@ class AttackCard(Card):
         return self.attack
 
     def generateCard(self):
-      pass
       file = open('card_catalog/attackCard.txt', 'r')
       file_r = file.read()
       end_num = file_r.count("\n") + 1
