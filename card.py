@@ -3,7 +3,7 @@ import random
 class Card:
   def __init__(self, name, description):
     self.name = name
-    self.type = "Error"
+    self.type = "This card has no type!"
     self.description = description
   
   #Getters
