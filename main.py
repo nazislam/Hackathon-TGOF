@@ -4,7 +4,7 @@ import maps
 import os
 import position
 def print_welcome():
-    print("Welcome to the random name game")
+    print("Welcome to the Whispers of War")
 
 def number_players():
     number = int(input("Please enter the number of players(2-4)"))
@@ -12,7 +12,7 @@ def number_players():
 
 def create_player(i):
     while (1):
-        type = input("What kind of character do you want(archer, mage, knight, warrior)? Please enter the first character")
+        type = input("What kind of character do you want(archer, mage, knight, warrior)? Please enter the first character: ")
         if type.lower() == "a":
             cha = character.createAcher(i)
             return cha
@@ -55,11 +55,13 @@ if __name__ == '__main__':
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print("Player number " + str(i + 1) + "'s turn")
                 targets = player.check_attack_range(map)
+                print("Your current Hp is", player.getHp())
                 print("Your location is " + str(player.getPosition()))
                 for j in range(len(player.hand)):
                     print(str(j) + ". " + str(player.hand[j]))
                 print(str(len(player.hand)) + ". " + "Quit turn.")
-                choice = int(input("Please enter your move"))
+                
+                choice = int(input("Please enter your move: "))
                 if choice == len(player.hand):
                     break
                 user_card = player.hand.pop(choice)
