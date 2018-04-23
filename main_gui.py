@@ -287,8 +287,8 @@ def renderHand(player_hand):
         card_name = card.getName()
         cur_card = pygame.image.load('resources/cards/' + card_name + '.png')
         cur_card = pygame.transform.scale(cur_card, (84, 140))
-        screen.blit(cur_card, (236 + 84 * count + 10 * count, 573))
-        botton2(cur_card, cur_card, 236 + 84 * count + 10 * count, 573, str(count))
+        screen.blit(cur_card, (370 + 84 * count + 10 * count, 573))
+        botton2(cur_card, cur_card,370 + 84 * count + 10 * count, 573, str(count))
 
 
         count += 1
@@ -374,6 +374,8 @@ def menu_loop():
             botton2(start, start_on_click, screen_w/2 - 135, screen_h/2 , action = "selecting")
             botton2(exit, exit_on_click, screen_w/2 - 135, screen_h/2 + 200 , action = "quit")
 
+            
+
             #botton('START', (0,0,0), (screen_w/2-75), (screen_h*1/2+50), 150, 50, (100, 255, 180), (0, 150, 0),'start')
 
         click = pygame.mouse.get_pressed()
@@ -423,6 +425,30 @@ def playing_loop():
         renderMapUpdate()
         command = ""
 
+        exit_in_interface = pygame.image.load('resources/interfaces/buttons/exit_in_interface.png')
+        exit_in_interface_on_click = pygame.image.load('resources/interfaces/buttons/exit_in_interface_on_click.png')
+
+        pause_in_interface = pygame.image.load('resources/interfaces/buttons/pause_in_interface.png')
+        pause_in_interface_on_click = pygame.image.load('resources/interfaces/buttons/pause_in_interface_on_click.png')
+        
+        botton2(exit_in_interface, exit_in_interface_on_click,  5 + 110 + 5, screen_h - 55, action="quit")
+        botton2(pause_in_interface, pause_in_interface_on_click, 5, screen_h - 55, action="pause")
+
+        warrior_icon_property = pygame.image.load('resources/interfaces/character_button/warrior_icon_property.png')
+        botton2(warrior_icon_property, warrior_icon_property,  5, 5, action="quit")
+
+        back_card = pygame.image.load('resources/interfaces/card.png')
+        back_card = pygame.transform.scale(back_card, (225 , 525))
+        botton2(back_card, back_card,  5, 155)
+
+
+        """botton(smg, smgc, x, y, w, h, ic, ac, action="None")
+        botton2(img, img2, x, y, action="None"):
+
+        botton('PAUSE', (0, 0, 0), 5 + 110 + 5, screen_h - 55, 110, 50,(100, 255, 180), (0, 150, 0), 'pause')
+        botton('PAUSE', (0, 0, 0), 5, screen_h - 55, 110, 50, (100, 255, 180), (0, 150, 0), 'pause')"""
+
+
         if turn == 0:
             cur_player = players[turn]
             if len(cur_player.hand) < 8:
@@ -453,11 +479,11 @@ def playing_loop():
 
             
             # UI Bottons
-            botton('PAUSE', (0, 0, 0), 5, screen_h - 55, 110, 50, (100, 255, 180),
+            """botton('PAUSE', (0, 0, 0), 5, screen_h - 55, 110, 50, (100, 255, 180),
                 (0, 150, 0), 'pause')
             botton('PAUSE', (0, 0, 0), 5 + 110 + 5, screen_h - 55, 110, 50,
                 (100, 255, 180), (0, 150, 0), 'pause')
-        
+        """
         else:
             cur_player = players[turn]
             cur_player.addCard(card.generateCard())
@@ -475,6 +501,7 @@ def playing_loop():
             botton('PAUSE', (0, 0, 0), 5 + 110 + 5, screen_h - 55, 110, 50,
                 (100, 255, 180), (0, 150, 0), 'pause')
 
+            
 
         #botton('O', (0, 0, 0), 235, 5, 40, 40, (100, 255, 180), (0, 150, 0), 'pause')
 
