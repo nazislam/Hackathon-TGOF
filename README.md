@@ -1,6 +1,6 @@
 # Hackathon-TGOF
 ## Whispers of War
-A project developed in 24 hours and won at Platts-Hackathon. Team members: Naz Islam, Sida Zhang, Hung Nguyen and Quan Vo.
+A RPG/strategy game developed in 24 hours and won at Platts-Hackathon. Team members: Naz Islam, Sida Zhang, Hung Nguyen and Quan Vo.
 
 ![Game Title](/resources/description/game_logo_shadow.png "Game Title")
 
