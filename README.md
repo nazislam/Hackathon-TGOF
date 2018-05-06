@@ -11,7 +11,7 @@ A RPG/strategy game developed in 24 hours and won at Platts-Hackathon. Team memb
 - The game will generate 8 cards for each player. These cards include different capabilities such as attack, speed, HP, range, and defense.
 ![Cards](/resources/description/cards_shadow.png "Cards")
 - Players attack if an enemy exists within the range of his attack zone.
-- The map has different terrain such as river, mountain, swamp, grass, where if the player goes, his range of movement will decrease. The weapon boxes and player position is generated randomly.
+- The map has different terrain such as river, mountain, swamp, grass, where if the player goes, his range of movement will decrease. The weapon boxes and player position are generated randomly.
 ![Random Maps](/resources/description/map_shadow.png "Maps generated randomly")
 - Each player has a randomly generated luck which represents the probability of dodging an enemy’s attack.
 - Objects like weapons, cards, and potions are spread all over the map, and players can grab them by moving to the block occupying the object.
