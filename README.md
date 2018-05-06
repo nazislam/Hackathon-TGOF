@@ -24,6 +24,9 @@ A project developed in 24 hours and won at Platts-Hackathon. Team members: Naz I
 The game is written in Python 3.7 and the graphical interface is developed using [Pygame](https://en.wikipedia.org/wiki/Pygame).
 To install and play the game:
 
-1. Open up a terminal and clone the repo by `git clone https://github.com/nazislam/Hackathon-TGOF.git` 
-2. Install Pygame by `python3 -m pip install -U pygame --user`
-3. Once Pygame is installed successfully, run the game by `python3 main_guy.py`.
+1. Clone the repository.  
+`git clone https://github.com/nazislam/Hackathon-TGOF.git`
+2. Install Pygame.  
+`python3 -m pip install -U pygame --user`
+3. Run the game:  
+`python3 main_gui.py`
