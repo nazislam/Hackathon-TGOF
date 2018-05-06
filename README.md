@@ -2,7 +2,7 @@
 
 A 24 hours long project won at Platts-Hackathon. Team members: Naz Islam, Sida Zhang, Hung Nguyen and Quan Vo.
 
-![Game Title](/resources/description/game_logo_shadow "Game Title")
+![Game Title](/resources/description/game_logo_shadow.png "Game Title")
 
 ## Whispers of War
 #### Game Concept
